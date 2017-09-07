@@ -1,0 +1,204 @@
+
+/**
+  * 星星闪烁背景
+  *
+ */
+@keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+} @-webkit-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-moz-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-ms-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+
+.stars, .twinkling{
+    min-height: 100%;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    display:block;
+}
+
+.mount {
+    position: fixed;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.stars {
+    background:#000 url(../img/index/star2_u2.png) repeat top center;
+    z-index:-3;
+}
+
+.twinkling{
+    background:transparent url(../img/index/block1.png) repeat top center;
+    z-index:-2;
+
+    -moz-animation:move-twink-back 200s linear infinite;
+    -ms-animation:move-twink-back 200s linear infinite;
+    -o-animation:move-twink-back 200s linear infinite;
+    -webkit-animation:move-twink-back 200s linear infinite;
+    animation:move-twink-back 200s linear infinite;
+}
+
+.mount {
+    background:url('../img/index/u9.png');
+    -webkit-background-size:100% 100% ;
+    background-size: 100% 100%;
+    z-index: -1;
+}
+
+
+
+
+/**
+  * 信封旋转
+  */
+
+/* 0-180 */
+@keyframes turn-letter-0-180 {
+    from {-webkit-transform: perspective(600px) rotateY(0deg);
+        -moz-transform:  perspective(600px) rotateY(0deg);
+        -ms-transform:  perspective(600px) rotateY(0deg);
+        -o-transform:  perspective(600px) rotateY(0deg);
+        transform:  perspective(600px) rotateY(0deg);}
+    to {
+        -webkit-transform:  perspective(600px) rotateY(180deg);
+        -moz-transform:  perspective(600px) rotateY(180deg);
+        -ms-transform: perspective(600px) rotateY(180deg);
+        -o-transform: perspective(600px) rotateY(180deg);
+        transform: perspective(600px) rotateY(180deg);}
+
+    }
+@-webkit-keyframes turn-letter-0-180 {
+     from {-webkit-transform: perspective(600px) rotateY(0deg);
+        -moz-transform:  perspective(600px) rotateY(0deg);
+        -ms-transform:  perspective(600px) rotateY(0deg);
+        -o-transform:  perspective(600px) rotateY(0deg);
+        transform:  perspective(600px) rotateY(0deg);}
+    to {
+        -webkit-transform:  perspective(600px) rotateY(180deg);
+        -moz-transform:  perspective(600px) rotateY(180deg);
+        -ms-transform: perspective(600px) rotateY(180deg);
+        -o-transform: perspective(600px) rotateY(180deg);
+        transform: perspective(600px) rotateY(180deg);}
+
+    }
+
+@-moz-keyframes turn-letter-0-180 {
+     from {-webkit-transform: perspective(600px) rotateY(0deg);
+        -moz-transform:  perspective(600px) rotateY(0deg);
+        -ms-transform:  perspective(600px) rotateY(0deg);
+        -o-transform:  perspective(600px) rotateY(0deg);
+        transform:  perspective(600px) rotateY(0deg);}
+    to {
+        -webkit-transform:  perspective(600px) rotateY(180deg);
+        -moz-transform:  perspective(600px) rotateY(180deg);
+        -ms-transform: perspective(600px) rotateY(180deg);
+        -o-transform: perspective(600px) rotateY(180deg);
+        transform: perspective(600px) rotateY(180deg);}
+
+}
+@-ms-keyframes turn-letter-0-180 {
+     from {-webkit-transform: perspective(600px) rotateY(0deg);
+        -moz-transform:  perspective(600px) rotateY(0deg);
+        -ms-transform:  perspective(600px) rotateY(0deg);
+        -o-transform:  perspective(600px) rotateY(0deg);
+        transform:  perspective(600px) rotateY(0deg);}
+    to {
+        -webkit-transform:  perspective(600px) rotateY(180deg);
+        -moz-transform:  perspective(600px) rotateY(180deg);
+        -ms-transform: perspective(600px) rotateY(180deg);
+        -o-transform: perspective(600px) rotateY(180deg);
+        transform: perspective(600px) rotateY(180deg);}
+
+}
+
+/* 180-90 */
+@-webkit-keyframes turn-letter-180-0 {
+    from {
+        -webkit-transform: perspective(600px) rotateY(180deg);
+        -moz-transform: perspective(600px) rotateY(180deg);
+        -ms-transform: perspective(600px) rotateY(180deg);
+        -o-transform: perspective(600px) rotateY(180deg);
+        transform: perspective(600px) rotateY(180deg);}
+    to {
+        -webkit-transform: perspective(600px) rotateY(0deg);
+        -moz-transform: perspective(600px) rotateY(0deg);
+        -ms-transform: perspective(600px) rotateY(0deg);
+        -o-transform: perspective(600px) rotateY(0deg);
+        transform: perspective(600px) rotateY(0deg);}
+}
+
+@-webkit-keyframes turn-letter-180-0 {
+    from {
+        -webkit-transform: perspective(600px) rotateY(180deg);
+        -moz-transform: perspective(600px) rotateY(180deg);
+        -ms-transform: perspective(600px) rotateY(180deg);
+        -o-transform: perspective(600px) rotateY(180deg);
+        transform: perspective(600px) rotateY(180deg);}
+    to {
+        -webkit-transform: perspective(600px) rotateY(0deg);
+        -moz-transform: perspective(600px) rotateY(0deg);
+        -ms-transform: perspective(600px) rotateY(0deg);
+        -o-transform: perspective(600px) rotateY(0deg);
+        transform: perspective(600px) rotateY(0deg);}
+}
+@-moz-keyframes turn-letter-180-0{
+     from {
+        -webkit-transform: perspective(600px) rotateY(180deg);
+        -moz-transform: perspective(600px) rotateY(180deg);
+        -ms-transform: perspective(600px) rotateY(180deg);
+        -o-transform: perspective(600px) rotateY(180deg);
+        transform: perspective(600px) rotateY(180deg);}
+    to {
+        -webkit-transform: perspective(600px) rotateY(0deg);
+        -moz-transform: perspective(600px) rotateY(0deg);
+        -ms-transform: perspective(600px) rotateY(0deg);
+        -o-transform: perspective(600px) rotateY(0deg);
+        transform: perspective(600px) rotateY(0deg);}
+}
+@-ms-keyframes turn-letter-180-0 {
+      from {
+        -webkit-transform: perspective(600px) rotateY(180deg);
+        -moz-transform: perspective(600px) rotateY(180deg);
+        -ms-transform: perspective(600px) rotateY(180deg);
+        -o-transform: perspective(600px) rotateY(180deg);
+        transform: perspective(600px) rotateY(180deg);}
+    to {
+        -webkit-transform: perspective(600px) rotateY(0deg);
+        -moz-transform: perspective(600px) rotateY(0deg);
+        -ms-transform: perspective(600px) rotateY(0deg);
+        -o-transform: perspective(600px) rotateY(0deg);
+        transform: perspective(600px) rotateY(0deg);}
+}
+
+.turn-180-0 {
+    animation:turn-letter-180-0 1.5s ease-in-out  1;
+    -moz-animation:turn-letter-180-0 1.5s ease-in-out  1;
+    -ms-animation:turn-letter-180-0 1.5s ease-in-out  1;
+    -o-animation:turn-letter-180-0 1.5s ease-in-out  1;
+    -webkit-animation:turn-letter-180-0 1.5s ease-in-out  1;
+}
+
+.turn-0-180 {
+    animation:turn-letter-0-180 1.5s ease-in-out  1;
+    -moz-animation:turn-letter-0-180 1.5s ease-in-out  1;
+    -ms-animation:turn-letter-0-180 1.5s ease-in-out  1;
+    -o-animation:turn-letter-0-180 1.5s ease-in-out  1;
+    -webkit-animation:turn-letter-0-180 1.5s ease-in-out  1;
+}
+

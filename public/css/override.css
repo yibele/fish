@@ -1,0 +1,92 @@
+body {
+    font-width : normal;
+}
+
+.modal-card-title {
+    color:#f0f0f0;
+    font-size :14px;
+}
+.modal-card-head {
+    background-color: #383838;
+    height: 37px;
+    padding: 15px;
+}
+.modal-card-body {
+    background : #eeeeee;
+    padding:46px;
+    color :#333333;
+    margin-top : 3%;
+}
+.column {
+    padding : 0.5rem;
+}
+.textarea {
+    min-width : inherit;
+    min-height : 200px;
+    outline : none;
+}
+.fa-sort-desc {
+    line-height : 1;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+.modal-content {
+    padding-top : 20px;
+}
+
+.modal.is-active {
+    -webkit-animation:fadeOut 0.5s 1;
+    -o-animation:fadeOut 0.5s 1;
+    animation:fadeOut 0.5s 1;
+}
+
+@keyframes fadeOut {
+    from { opacity: 0}
+    to { opacity : 1}
+}
+
+.modal-content a {
+    color:#ccc !important;
+}
+
+.modal-content .input {
+    color: #cccccc;
+    background-color:rgba(0,0,0,0.8);
+    border : none;
+    margin:0 auto;
+}
+
+.loginForm {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius:5px;
+}
+
+.tabs ul {
+    border-bottom-color: inherit;
+    border-bottom-style: inherit;
+}
+
+.tabs a{
+    font-size : 18px;
+}
+.tabs a.active {
+    color:white !important;
+}
+
+.modal-background {
+    opacity:0.8;
+}
+
+.loginForm , .registerForm{
+    display: none;
+}
+.loginForm.is-active {
+    display: block;
+}
+.registerForm.is-active {
+    display:block;
+}
+
