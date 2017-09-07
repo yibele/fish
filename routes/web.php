@@ -31,7 +31,6 @@ Route::get('/shaidan','shaidan@index');
 
 Route::get('/zifei','publicController@zifei');
 
-Route::get('/userController/{id}','userController@show');
 
 Route::post('/letter/create','letterController@create');
 

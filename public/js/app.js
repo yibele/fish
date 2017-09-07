@@ -227,7 +227,7 @@ function checkLogin() {
       },
       success: function (data, status) {
           var data = eval('('+data+')');
-          var textList = '<li><a href="#">'+data.phone+'<span class="caret"></span></a></li><li><a href="/logout" onclick="event.preventDefault();document.getElementById('+'"logout-form"'+').submit();">退出</a></li> <form id="logout-form" action="/logout" method="post" style="display:none;"{{csrf_token()}} </form></li> '
+          var textList = '<li><a href="#">'+data.phone+'<span class="caret"></span></a></li><li><a href="/logout" onclick="event.preventDefault();document.getElementById('+'"logout-form"'+').submit();">退出</a></li> <form id="logout-form" action="/logout" method="post" style="display:none;">'+"{{csrf_token()}}"+'</form></li> '
           $('#nav_login').append(textList);
       }
 
