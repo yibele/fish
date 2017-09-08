@@ -7,6 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+    public function letter() {
+        return $this->hasMany('App\letters');
+    }
+
     use Notifiable;
 
     /**

@@ -74,13 +74,15 @@
         -moz-transform:  perspective(600px) rotateY(0deg);
         -ms-transform:  perspective(600px) rotateY(0deg);
         -o-transform:  perspective(600px) rotateY(0deg);
-        transform:  perspective(600px) rotateY(0deg);}
+        transform:  perspective(600px) rotateY(0deg);
+    }
     to {
         -webkit-transform:  perspective(600px) rotateY(180deg);
         -moz-transform:  perspective(600px) rotateY(180deg);
         -ms-transform: perspective(600px) rotateY(180deg);
         -o-transform: perspective(600px) rotateY(180deg);
-        transform: perspective(600px) rotateY(180deg);}
+        transform: perspective(600px) rotateY(180deg);
+    }
 
     }
 @-webkit-keyframes turn-letter-0-180 {

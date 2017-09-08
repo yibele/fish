@@ -2,13 +2,12 @@
 /**
  * Created by PhpStorm.
  * User: yibele
- * Date: 2017/9/4
- * Time: 上午10:57
+ * Date: 2017/9/8
+ * Time: 下午4:50
  */
 ?>
 
-@extends('layouts.manage')
+@extends('layouts.app')
 @section('content')
-
 
 @endsection

@@ -59,7 +59,7 @@ const vm = new Vue({
           this.tag = 1;
           this.trans_class = 'turn-0-180';
           setTimeout(this.chageImg, 750, this.letter_back, i);
-          setTimeout(this.chageImg, 1400, this.letter_back_02, i);
+          setTimeout(this.chageImg, 1500, this.letter_back_02, i);
           setTimeout(this.turn_back, 4000, i);
         }
       } else {
@@ -67,7 +67,7 @@ const vm = new Vue({
           this.tag1 = 1;
           this.trans_class1 = 'turn-0-180';
           setTimeout(this.chageImg, 750, this.card_back_03, i);
-          setTimeout(this.chageImg, 1490, this.card_back, i);
+          setTimeout(this.chageImg, 1500, this.card_back, i);
           setTimeout(this.turn_back, 4000, i);
         }
       }
@@ -142,7 +142,7 @@ window.onload = function() {
   var star = $('.stars').height(height);
   $('.twinkling').height(height);
   /** 检查登录状态 */
-  checkLogin();
+  // checkLogin();
 };
 
 function showLoginModal(e) {
@@ -222,13 +222,12 @@ function checkLogin() {
       cache: false,
       timeout: 15000,
       error: function () {
-          var textList = '<li onclick="showLoginModal(1)">登陆&nbsp|</li><li onclick="showLoginModal(2)">注册</li>'
+          var textList = '<div id="loginPanel"><li onclick="showLoginModal(1)">登陆&nbsp|</li><li onclick="showLoginModal(2)">注册</li></div>'
           $('#nav_login').append(textList);
       },
       success: function (data, status) {
+          $('#loginPanel').hide();
           var data = eval('('+data+')');
-          var textList = '<li><a href="#">'+data.phone+'<span class="caret"></span></a></li><li><a href="/logout" onclick="event.preventDefault();document.getElementById('+'"logout-form"'+').submit();">退出</a></li> <form id="logout-form" action="/logout" method="post" style="display:none;">'+"{{csrf_token()}}"+'</form></li> '
-          $('#nav_login').append(textList);
       }
 
   }

@@ -27,17 +27,17 @@
         <ul id="nav_login">
             <li>
                 <img src="img/index/head.png">
-            <!--
+
                 @if(Auth::guest())
                 <li onclick="showLoginModal(1)">登录&nbsp&nbsp&nbsp|</li>
                 <li onclick="showLoginModal(2)">注册</li>
                 @else
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <a href="/my_manfish" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         {{ Auth::user()->phone }} <span class="caret"></span>
                     </a>
 
                         <li>
-                            <a href="{{ route('logout') }}"
+                            <a
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 退出
@@ -48,7 +48,6 @@
                             </form>
                         </li>
                 @endif
-            -->
             </li>
         </ul>
     </div>

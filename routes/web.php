@@ -35,7 +35,13 @@ Route::get('/zifei','publicController@zifei');
 Route::post('/letter/create','letterController@create');
 
 Route::get('/test',function(){
+
+    $letter = \App\letters::find(1);
+    dd($letter->user);
+
 });
+
+Route::get('/my_manfish','HomeController@dashboard')->name('private.dashboard');
 
 
 

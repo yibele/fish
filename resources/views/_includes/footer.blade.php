@@ -25,6 +25,7 @@
                 {{csrf_field()}}
                 <input type="text" placeholder="请输入手机号" id="phone" name="phone" class="input" required style="margin-bottom:20px;height: 45px;">
                 <input type="password" placeholder="请输入密码" id="password" name="password" class="input" required style="height: 45px;">
+                <p class="help is-danger" id="loginMes"></p>
                 <a href="" style="position: absolute;right:45px;top:271px;text-decoration: underline;">忘记密码</a>
                 <button type="submit" class="" value=""  style="width:420px;height : 45px; margin-top:20px;position:relative;cursor: pointer;background-color:rgb(228,92,53);border:none;font-size:16px;color:#fff;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius: 5px;">登录</button>
             </form>
@@ -73,16 +74,24 @@
     //登录
     $('#login-form').on('submit',function (e) {
         e.preventDefault();
-        $.post(
-            $(this).attr('action'),
-            {
+
+        $.ajax({
+            url : $(this).attr('action'),
+            type :'post',
+            timeout : 1500,
+            data : {
                 phone: $('#phone').val(),
                 password : $("#password").val()
             },
-            function (res) {
-                console.log(res);
+            success : function(data) {
+                $('#loginMes').html('');
+                $('#loginModal').removeClass('is-active');
+                checkLogin();
+            },
+            error : function (data) {
+                $('#loginMes').html('账号或者密码错误')
             }
-        )
+        })
     })
 
     var modal_content = $('.modal-content');
