@@ -21,8 +21,7 @@ const vm = new Vue({
      * 写信页面
      */
     letter_content_background: {
-      backgroundImage: 'url(/img/xinzhi/xinzhi_1.jpg)',
-      backgroundSize: 'contain'
+
     },
     pStyle: {
 

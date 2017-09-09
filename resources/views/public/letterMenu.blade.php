@@ -5,7 +5,7 @@
   @foreach($xinzhis as $x)
   <div class="letter_img_lt1" id='letter_tums'>
     @foreach($x as $xinzhi)
-      <img src="/img/xinzhi/{{$xinzhi['src']}}" class='letter_img_detail' alt="" @click='changeLetterBackground'>
+      <img src="{{asset($xinzhi['src'])}}" class='letter_img_detail' alt="" @click='changeLetterBackground'>
     @endforeach
   </div>
   @endforeach

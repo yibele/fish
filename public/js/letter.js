@@ -59,7 +59,7 @@ function changeFontFamily(event, fontFamily, accesskey, lineHeight) {
   return false;
 }
 /**  信件信息上传 */
-function createLetter(isLogin) {
+function createLetter(letterid,isLogin) {
   if (isLogin) {
     /** 获取信件部分的相关属性，并发送到数据库中 */
     $letter_neirong = $('#letter_neirong')[0];
@@ -89,7 +89,7 @@ function createLetter(isLogin) {
       url: '/letter/create',
       data: letter_data,
       success: function (data) {
-
+          console.log(data);
       },
       fail: function (data) {
           console.log(data)
@@ -97,5 +97,10 @@ function createLetter(isLogin) {
     })
   } else {
 
+    alert('用户未登录');
+
   }
 }
+
+
+

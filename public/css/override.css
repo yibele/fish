@@ -89,4 +89,11 @@ h4 {
 .registerForm.is-active {
     display:block;
 }
+.menu a {
+    color: #bbb !important;
+    font-size : 12px !important;
+}
+.menu a:hover {
+    color: #ffffff !important;
+}
 

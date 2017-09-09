@@ -10,7 +10,7 @@
 <div class="nav1">
     <div class="logo">
         <a href="/">
-            <img src="img/index/logo_li.png">
+            <img src="{{asset('img/index/logo_li.png')}}">
         </a>
     </div>
     <div class="index_menu">
@@ -19,7 +19,7 @@
             <li><a href="">寄明信片</a></li>
             <li><a href="/publetter/index">看公开信</a></li>
             <li><a href="/shaidan/index">晒单</a></li>
-            <li><a href="/user/myletter">我的慢递</a></li>
+            <li><a href="/my_manfish">我的慢递</a></li>
             <li><a href="/public/charges">资费及帮助</a></li>
         </ul>
     </div>

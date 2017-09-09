@@ -21,7 +21,7 @@ class PublicController extends Controller
 		return view('public.puletter');
 	}
 	
-	private function getXinzhis() {
+	public static function getXinzhis() {
         $newXinzhis = array();
         $xinzhis = Xinzhis::all()->toArray();
         for($i=0;$i<ceil(count($xinzhis)/7);$i++) {
@@ -32,7 +32,7 @@ class PublicController extends Controller
         return $newXinzhis;
 	}
 
-	private function getFonts() {
+	public static function getFonts() {
 		$newFonts = array();
 		$fonts = Fonts::all()->toArray();
 		for($i=0 ; $i< ceil(count($fonts)/12);$i++) {
@@ -43,7 +43,11 @@ class PublicController extends Controller
         return $newFonts;
 	}
 
-	private function getFontColors() {
+	public static function getFontColors() {
 		return Colors::all()->toArray();
+	}
+
+	public function editLetter ($letterId) {
+		echo $letterId;
 	}
 }

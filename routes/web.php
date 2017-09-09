@@ -31,7 +31,6 @@ Route::get('/shaidan','shaidan@index');
 
 Route::get('/zifei','publicController@zifei');
 
-
 Route::post('/letter/create','letterController@create');
 
 Route::get('/test',function(){
@@ -43,6 +42,11 @@ Route::get('/test',function(){
 
 Route::get('/my_manfish','HomeController@dashboard')->name('private.dashboard');
 
+Route::get('/editLetter/{letterId}','HomeController@editLetter')->name('private.editLetter');
+
+Route::post('/updateLetter','HomeController@updateLetter')->name('private.updateLetter');
+
+Route::get('/updateContact','HomeController@updateContact')->name('private.updateContact');
 
 
 

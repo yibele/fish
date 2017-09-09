@@ -10,7 +10,7 @@
 @section('content')
     <div class='container1'>
         <div class='myletter_title'>
-            <button>我的慢递</button>
+            <button style="color:#ffffff">我的慢递</button>
             &nbsp &nbsp| &nbsp &nbsp
             <button>我的明信片</button>
         </div>
@@ -21,11 +21,11 @@
                     写信日期: {{ $letter->lt_date }}
                 </div>
                 <div class='menu'>
-                    <button>修改收信人信息</button>
-                    <button>继续编辑</button>
-                    <button>续单</button>
-                    <button>下载信件</button>
-                    <button>查看信件</button>
+                    <button><a href="">修改收信人信息</a></button>
+                    <button><a href="{{ route('private.editLetter',$letter->lid) }}">继续编辑</a></button>
+                    <button><a href="">续单</a></button>
+                    <button><a href="">下载信件</a></button>
+                    <button><a href="">查看信件</a></button>
                 </div>
             </div>
             <div class='myletter_content_detail'>
@@ -56,5 +56,6 @@
         </div>
         @endforeach
     </div>
-
+    {{ $letters->links() }}
 @endsection
+

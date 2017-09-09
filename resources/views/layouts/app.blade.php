@@ -12,12 +12,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/vue.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/app.css">
-    <link rel="stylesheet" type="text/css" href="css/bulma.css">
-    <link rel="stylesheet" type="text/css" href="css/override.css">
-    <link rel="stylesheet" type="text/css" href="css/start.css">
+    <script type="text/javascript" src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/vue.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bulma.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/override.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/start.css')}}">
     <script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js?"></script>
     <script type="text/javascript" src="http://cdn.webfont.youziku.com/youziku.justtime.js"></script>
     <title></title>
@@ -35,7 +35,7 @@
         <!-- Scripts -->
     @stack('javascript')
     @include('_includes.footer')
-<script type="text/javascript" src='js/app.js'></script>
+<script type="text/javascript" src='{{asset('js/app.js')}}'></script>
 </body>
 </html>
 

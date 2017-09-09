@@ -42,4 +42,9 @@ class LoginController extends Controller
     public function username() {
         return 'phone';
     }
+
+    public function showLoginForm()
+    {
+        return view('public.index');
+    }
 }

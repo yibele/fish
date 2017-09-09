@@ -7,7 +7,6 @@ use App\letters;
 
 class letterController extends Controller
 {
-
     public function index(){
 
     }
@@ -15,7 +14,6 @@ class letterController extends Controller
     public function create(Request $request){
         $post = $request->post();
 
-        #测试
 
         $letter =[
             'lt_back'=>$post['lt_back'],
@@ -27,7 +25,9 @@ class letterController extends Controller
         ];
 
         if($res = $this->saveLetter($letter)) {
-            echo $res;
+            return response($res,200);
+        } else {
+            return response('cant create letter',500);
         }
     }
 

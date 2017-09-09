@@ -1,0 +1,12 @@
+.contact_main {
+    color : #ccc;
+    font-size : 14px;
+    width : 1180px;
+    height: 477px;
+    border : 1px solid #333333;
+    padding-top : 48px;
+    padding-left:89px;
+    padding-right : 89px;
+    padding-bottom : 20px;
+    border-radius: 5px;
+}
