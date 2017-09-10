@@ -1,12 +1,74 @@
 .contact_main {
     color : #ccc;
-    font-size : 14px;
+    font-size : 15px;
     width : 1180px;
-    height: 477px;
     border : 1px solid #333333;
     padding-top : 48px;
     padding-left:89px;
     padding-right : 89px;
-    padding-bottom : 20px;
+    padding-bottom : 15px;
     border-radius: 5px;
+}
+
+.contact_input {
+    border:1px #464646 solid;
+    border-radius:5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    background-color:inherit;
+    padding-left: 20px;
+    font-weight: bold;
+    
+}
+
+.contact_input input:-webkit-input-placeholder { /* WebKit browsers */
+    color:    #ccc;
+}
+.contact_input input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #ccc;
+   opacity:  1;
+}
+.contact_input input:-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #ccc;
+   opacity:  1;
+}
+.contact_input input:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #ccc;
+}
+
+
+.contact_input1 {
+    color:#ccc;
+    height : 47px;
+    margin-right: 10px;
+}
+
+.contact_main p{
+    display:inline-block;
+    vertical-align: top;
+}
+
+.contact_detail {
+    width : 439px;
+    height : 47px;
+    margin-bottom:10px;
+    color : #ccc;
+    font-size:15px;
+}
+.reset_a {
+    color: #ccc !important;
+}
+.reset_a:hover {
+    color:#fff !important;
+}
+.pagination .pagination-border-reset {
+    border : 1px #464646 solid !important;
+    margin-left : 0px;
+    margin-right: 0px;
+}
+.pagination-link,.pagination-next,.pagination-previous {
+    color : #ccc !important;
+}
+.contact_main .table {
+
 }

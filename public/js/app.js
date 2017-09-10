@@ -17,16 +17,15 @@ const vm = new Vue({
     tag1: 0,
     tag: 0,
     count: 0,
-    /**
-     * 写信页面
-     */
-    letter_content_background: {
-
-    },
-    pStyle: {
-
-    },
+      /** 添加联系人信息页面相关 */
+      contactDate :[],
+      contactTime : '',
+      contactName : '',
+      contactPhone: "",
+      contactCity : '',
+      contactHome: ''
   },
+
   beforeMount: function() {},
   mounted: function() {
     var config = {
@@ -52,6 +51,19 @@ const vm = new Vue({
 
   },
   methods: {
+      /**
+       * 添加联系人
+       */
+
+      addContact : function () {
+          address = this.contactCity +' '+this.contactHome;
+          this.contactDate.push({
+              name : this.contactName,
+              phone : this.contactPhone,
+              address : address,
+              time : this.contactTime
+          })
+      },
     turn_to: function(event, i) {
       if (i == 0) {
         if (this.tag == 0) {
