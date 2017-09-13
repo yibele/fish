@@ -25,16 +25,16 @@
 </head>
 <body>
 
-    @include('_includes.nav')
     @include("_includes.stars")
 
     <div id="app">
+        @include('_includes.nav')
         @yield('content')
     </div>
 
-        <!-- Scripts -->
     @stack('javascript')
-    @include('_includes.footer')
+        <!-- Scripts -->
+        @include('_includes.footer')
 <script type="text/javascript" src='{{asset('js/app.js')}}'></script>
 </body>
 </html>

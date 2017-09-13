@@ -33,11 +33,9 @@ Route::get('/zifei','publicController@zifei');
 
 Route::post('/letter/create','letterController@create');
 
-Route::get('/test',function(){
-
-    $letter = \App\letters::find(1);
-    dd($letter->user);
-
+Route::post('/test',function(){
+    $request = Request::post();
+    print_r($request);
 });
 
 Route::get('/my_manfish','HomeController@dashboard')->name('private.dashboard');
@@ -46,8 +44,9 @@ Route::get('/editLetter/{letterId}','HomeController@editLetter')->name('private.
 
 Route::post('/updateLetter','HomeController@updateLetter')->name('private.updateLetter');
 
-Route::get('/updateContact','HomeController@updateContact')->name('private.updateContact');
+Route::get('/createContact/{lid}','HomeController@createContact')->name('private.createContact');
 
+Route::post('/saveContact','HomeController@saveContact')->name('private.saveContact');
 
 
 

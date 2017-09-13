@@ -3,3 +3,16 @@
  */
 
 
+$(function () {
+    $('#contact_slides').slidesjs({
+        width: 448,
+        height: 185,
+        navigation: {
+            active: false,
+            effect: 'slide'
+        },
+        pagination: {
+            active: false
+        }
+    })
+})

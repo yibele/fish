@@ -12,6 +12,10 @@ class User extends Authenticatable
         return $this->hasMany('App\letters');
     }
 
+    public function contacts () {
+        return $this->hasMany('App\Contacts');
+    }
+
     use Notifiable;
 
     /**

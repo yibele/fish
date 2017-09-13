@@ -26,14 +26,13 @@
     <div class="index_menu nav_login" style="width:200px">
         <ul id="nav_login">
             <li>
-                <img src="img/index/head.png">
-
+                <img src="{{asset('img/index/head.png')}}">
                 @if(Auth::guest())
                 <li onclick="showLoginModal(1)">登录&nbsp&nbsp&nbsp|</li>
                 <li onclick="showLoginModal(2)">注册</li>
                 @else
                     <a href="/my_manfish" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ Auth::user()->phone }} <span class="caret"></span>
+                       {{(Auth::user()->phone)}} <span class="caret"></span>
                     </a>
 
                         <li>

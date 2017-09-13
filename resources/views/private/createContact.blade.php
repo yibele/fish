@@ -2,12 +2,20 @@
 /**
  * Created by PhpStorm.
  * User: yibele
+ * Date: 2017/9/12
+ * Time: 下午2:17
+ */
+?>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: yibele
  * Date: 2017/9/9
  * Time: 上午11:11
  */
 ?>
 
-    @extends('layouts.app') @section('content')
+@extends('layouts.app') @section('content')
 
     <div class="container1">
         <div class="contact_container" v-if="contact_page ===1">
@@ -36,27 +44,23 @@
                             </div>
                         </div>
                         <hr>
-                        <table class="table is-fullwidth ">
-                            <thead>
-                                <tr>
-                                    <th>收件人编号</th>
-                                    <th>寄信时间</th>
-                                    <th>收件人姓名</th>
-                                    <th>电话</th>
-                                    <th>地址</th>
-                                    <th>操作</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(item,index) in contactDate">
-                                    <td>${index+1}</td>
-                                    <td>${item.time}</td>
-                                    <td>${item.name}</td>
-                                    <td>${item.phone}</td>
-                                    <td>${item.address}</td>
-                                    <td><button type="button" class="button is-link" @click="removeCon(index)">删除</button></td>
-                                </tr>
-                            </tbody>
+                        <table class="table is-fullwidth table-inherit" id="contact_table">
+                            <tr>
+                                <th>收件人编号</th>
+                                <th>寄信时间</th>
+                                <th>收件人姓名</th>
+                                <th>电话</th>
+                                <th>地址</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr v-for="(item,index) in contactDate">
+                                <td>${index+1}</td>
+                                <td>${item.time}</td>
+                                <td>${item.name}</td>
+                                <td>${item.phone}</td>
+                                <td>${item.address}</td>
+                                <td><button type="button" class="button is-link" @click="removeCon(index)">删除</button></td>
+                            </tr>
                         </table>
                         <button class="button is-white" onclick="return false;">地址铺添加</button>
                         <button class="button is-white" onclick="return false;">由他人填写</button>
@@ -67,7 +71,7 @@
                                     <a href="" class="pagination-link pagination-border-reset">3</a>
                                     <a href="" class="pagination-link pagination-border-reset">
                                         <a href="" class="pagination-link pagination-border-reset">
-                                        <a href="" class="pagination-link pagination-border-reset">...</a>
+                                            <a href="" class="pagination-link pagination-border-reset">...</a>
                                 </li>
                             </ul>
                             <a href="" class='pagination-next pagination-border-reset'>下一页</a>
@@ -85,25 +89,25 @@
         <div class="contact_container" v-else="contact_page===2">
             <div>
                 请选择支付方式
-                    <input type="radio" name="pay">{{asset('img/public/zhifubao.png')}} <input  name="pay" type="radio">{{asset('img/public/weixin.png')}}
+                <input type="radio" name="pay">{{asset('img/public/zhifubao.png')}} <input  name="pay" type="radio">{{asset('img/public/weixin.png')}}
                 应付金额 ￥${feiyong_all}
                 使用代金券支付
             </div>
             <div style="margin:0 auto;width : 400px">
                 <button type="button" class="button is-link is-centered" style="margin-top:65px;color:#ccc;font-size:15px;margin-right:30px;text-decoration: none; " @click="pay(1)">上一步</button>
-                <button class="btn1" style="display:inline-block;font-size:15px" >下一步：确认支付</button>
+                <button class="btn1" style="display:inline-block;font-size:15px" @click="zhifu({{$lid}})" >下一步：确认支付</button>
             </div>
         </div>
 
 
 
-    @push('style')
-    <link rel="stylesheet" href="{{asset('css/contactUpdate.css')}}"> @endpush @push('javascript')
-    @endpush
-    @push('javascript')
+        @push('style')
+        <link rel="stylesheet" href="{{asset('css/contactUpdate.css')}}"> @endpush @push('javascript')
+        @endpush
+        @push('javascript')
         <script src="{{asset('js/jquery.slides.min.js')}}"></script>
         <script src="{{asset('js/updateContact.js')}}"></script>
-    @endpush
+        @endpush
         <script>
             $(function() {
                 $('#slides').slidesjs({
@@ -119,5 +123,6 @@
                 });
             });
         </script>
-    @endsection
+@endsection
+
 

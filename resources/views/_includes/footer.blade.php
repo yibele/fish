@@ -9,6 +9,7 @@
 
 <!-- 登录modal部分 -->
 
+<div id='footer'>
 <div class="modal" id="loginModal">
     <div class="modal-background" onclick="closeModal('#loginModal')"></div>
     <div class="modal-content" style="background-image:url('{{asset('img/index/loginBack.png')}}');width:670px;height : 380px">
@@ -21,13 +22,13 @@
         </div>
 
         <div class="is-centered loginForm is-active" id="loginForm">
-            <form action="{{url('/login')}}" method="post" style="margin-top:40px;width:420px" id="login-form" >
+            <form action="{{url('/login')}}" method="post" style="margin-top:40px;width:420px" id="lForm" >
                 {{csrf_field()}}
                 <input type="text" placeholder="请输入手机号" id="phone" name="phone" class="input" required style="margin-bottom:20px;height: 45px;">
                 <input type="password" placeholder="请输入密码" id="password" name="password" class="input" required style="height: 45px;">
                 <p class="help is-danger" id="loginMes"></p>
                 <a href="" style="position: absolute;right:45px;top:271px;text-decoration: underline;">忘记密码</a>
-                <button type="submit" class="" value=""  style="width:420px;height : 45px; margin-top:20px;position:relative;cursor: pointer;background-color:rgb(228,92,53);border:none;font-size:16px;color:#fff;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius: 5px;">登录</button>
+                <button type="submit" class="" value="" id="login_btn" style="width:420px;height : 45px; margin-top:20px;position:relative;cursor: pointer;background-color:rgb(228,92,53);border:none;font-size:16px;color:#fff;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius: 5px;">登录</button>
             </form>
         </div>
 
@@ -53,65 +54,11 @@
                 <p class="help is-danger" style="display:none" id="passBig">密码必须以字母开头并大于8位数</p>
                 <input class="" value="注册" type="submit"  style=" margin-top:20px;width:420px;height : 45px; position:relative;cursor: pointer;background-color:rgb(228,92,53);border:none;font-size:16px;color:#fff;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius: 5px;" >
             </form>
-
         </div>
     </div>
     <button class="modal-close is-large"  aria-label="close" onclick="closeModal('#loginModal')" data-target="#loginModal"></button>
 </div>
 
-<script>
-
-    // 注册
-    $('#register-form').on('submit',function (e) {
-        e.preventDefault();
-        console.log($("#resphone").val())
-        console.log($("#respass").val())
-        $.post($(this).attr('action'),{phone : $('#resphone').val(),password: $("#respass").val()},function(res) {
-            console.log(res);
-        })
-    })
-
-    //登录
-    $('#login-form').on('submit',function (e) {
-        e.preventDefault();
-
-        $.ajax({
-            url : $(this).attr('action'),
-            type :'post',
-            timeout : 1500,
-            data : {
-                phone: $('#phone').val(),
-                password : $("#password").val()
-            },
-            success : function(data) {
-                $('#loginMes').html('');
-                $('#loginModal').removeClass('is-active');
-                checkLogin();
-            },
-            error : function (data) {
-                $('#loginMes').html('账号或者密码错误')
-            }
-        })
-    })
-
-    var modal_content = $('.modal-content');
-
-    $("#loginTab").click(function () {
-        modal_content.height('380px').css('background-image','url(/img/index/loginBack.png)')
-        $(this).addClass('active');
-        $('#registerTab').removeClass('active');
-        $('#loginForm').addClass('is-active');
-        $('#registerForm').removeClass('is-active');
-    })
-
-    $("#registerTab").click(function () {
-        modal_content.height('500px').css('background-image','url(/img/index/registerBak.png)')
-        $(this).addClass('active');
-        $("#loginTab").removeClass('active')
-        $('#registerForm').addClass('is-active');
-        $('#loginForm').removeClass('is-active')
-    })
-</script>
 
 
 <div class="footer" style="padding-bottom : 45px;">
@@ -140,3 +87,51 @@
         <a href="">联系我们</a>
     </div>
 </div>
+</div>
+
+
+<script>
+$(function () {
+ // 注册
+    $('#register-form').on('submit',function (e) {
+        e.preventDefault();
+        console.log($("#resphone").val())
+        console.log($("#respass").val())
+        $.post($(this).attr('action'),{phone : $('#resphone').val(),password: $("#respass").val()},function(res) {
+            console.log(res);
+        })
+    })
+
+    //登录
+    $('#lForm').submit(function (e) {
+        e.preventDefault();
+        $('#login_btn').val('正在登录...');
+        $.ajax({
+            url : '/login',
+            type :'post',
+            timeout : 1500,
+            data : {
+                phone: $('#phone').val(),
+                password : $("#password").val()
+            },
+            success : function(data) {
+                $('#loginMes').html('');
+                $('#loginModal').removeClass('is-active');
+            },
+            error : function (data) {
+                $('#loginMes').html('账号或者密码错误')
+            }
+        })
+    })
+
+  
+    $("#registerTab").click(function () {
+        modal_content.height('500px').css('background-image','url(/img/index/registerBak.png)')
+        $(this).addClass('active');
+        $("#loginTab").removeClass('active')
+        $('#registerForm').addClass('is-active');
+        $('#loginForm').removeClass('is-active')
+    })
+})
+   
+</script>

@@ -7,13 +7,18 @@ use App\letters;
 
 class letterController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
 
     }
 
     public function create(Request $request){
         $post = $request->post();
-
 
         $letter =[
             'lt_back'=>$post['lt_back'],
@@ -24,8 +29,8 @@ class letterController extends Controller
             'lt_color'=>$post['lt_color']
         ];
 
-        if($res = $this->saveLetter($letter)) {
-            return response($res,200);
+        if($lid = $this->saveLetter($letter)) {
+            return response($lid,200);
         } else {
             return response('cant create letter',500);
         }

@@ -58,17 +58,23 @@ function changeFontFamily(event, fontFamily, accesskey, lineHeight) {
   letter_neirong.style.lineHeight = lineHeight;
   return false;
 }
-/**  信件信息上传 */
-function createLetter(letterid,isLogin) {
-  if (isLogin) {
+
+/**检测是否登录 */
+
+/**  保存信件 */
+function createLetter() {
+  var data = checkLogin();
+  data = eval('('+data+')');
+  if (data) {
     /** 获取信件部分的相关属性，并发送到数据库中 */
     $letter_neirong = $('#letter_neirong')[0];
     $letter_container = $('#letter_container')[0];
-    $lt_back = $letter_container.style.backgroundImage.slice(4, -1);
+    $lt_back = $letter_container.style.backgroundImage.slice(4, -1) ? $letter_container.style.backgroundImage.slice(4, -1):'/img/xinzhi/xinzhi_1.jpg';
     $lt_content = $letter_neirong.innerHTML;
     $lt_fontSize = $letter_container.style.fontSize.slice(0, -2);
     $lt_fontFamily = [$letter_neirong.getAttribute('fontid'), $letter_neirong.getAttribute('accesskey')];
     $lt_color = $letter_container.style.color ? $letter_container.style.color : '#ffffff';
+    $user_id = data.userId;
     //防止csrf攻击
     $.ajaxSetup({
       headers: {
@@ -77,6 +83,7 @@ function createLetter(letterid,isLogin) {
     });
 
     letter_data = {
+      'user_id':$user_id,
       'lt_back':$lt_back,
       'lt_content':$lt_content,
       'lt_fontSize':$lt_fontSize,
@@ -88,17 +95,18 @@ function createLetter(letterid,isLogin) {
       method: 'POST',
       url: '/letter/create',
       data: letter_data,
+      async: false ,
+      timeout : 15000,
       success: function (data) {
-          console.log(data);
+        var lid = data;
+        document.location.href ="/createContact/"+lid;
       },
       fail: function (data) {
-          console.log(data)
+          alert('网络错误，请检查网络');
       }
     })
   } else {
-
-    alert('用户未登录');
-
+    showLoginModal();
   }
 }
 

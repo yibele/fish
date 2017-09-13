@@ -38,7 +38,7 @@
     </div>
   </div>
 </div>
-<button class="btn1" onclick='createLetter(true)'>下一步：设置收信信息</button> 
+<button class="btn1" onclick='createLetter()'>下一步：设置收信信息</button> 
 
 @push('javascript')
 <script src='js/colorpicker.js'></script>
