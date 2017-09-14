@@ -31,7 +31,7 @@ Route::get('/shaidan','shaidan@index');
 
 Route::get('/zifei','publicController@zifei');
 
-Route::post('/letter/create','letterController@create');
+Route::post('/letter/create','HomeController@create');
 
 Route::post('/test',function(){
     $request = Request::post();
@@ -48,6 +48,7 @@ Route::get('/createContact/{lid}','HomeController@createContact')->name('private
 
 Route::post('/saveContact','HomeController@saveContact')->name('private.saveContact');
 
+Route::get('/viewLetter/{id}','HomeController@viewLetter')->name('private.viewLetter');
 
 
 

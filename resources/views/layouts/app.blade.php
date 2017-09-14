@@ -28,8 +28,12 @@
     @include("_includes.stars")
 
     <div id="app">
+        <span v-show="message" class="messages notification is-danger is-pulled-right">
+            ${message}
+        </span>
         @include('_includes.nav')
         @yield('content')
+
     </div>
 
     @stack('javascript')

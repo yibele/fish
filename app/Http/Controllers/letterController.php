@@ -17,42 +17,11 @@ class letterController extends Controller
 
     }
 
-    public function create(Request $request){
-        $post = $request->post();
-
-        $letter =[
-            'lt_back'=>$post['lt_back'],
-            'lt_content'=>$post['lt_content'],
-            'lt_fontSize'=>$post['lt_fontSize'],
-            'lt_fontid'=>$post['lt_fontFamily'][0],
-            'lt_accesskey'=>$post['lt_fontFamily'][1],
-            'lt_color'=>$post['lt_color']
-        ];
-
-        if($lid = $this->saveLetter($letter)) {
-            return response($lid,200);
-        } else {
-            return response('cant create letter',500);
-        }
-    }
-
     public function update() {
 
     }
 
-    private function saveLetter($letter){
 
-        $letters = new letters();
-
-        foreach($letter as $k=>$v) {
-            $letters->$k = $v;
-        }
-
-        $res = $letters->save();
-        if($res) {
-            return $letters->lid;
-        }
-    }
 }
 
 

@@ -31,8 +31,12 @@ const vm = new Vue({
     feiyong: 19,
     keep_feiyong: 2,
 
-    /** 支付 */
+    /** 支付 获取联系人列表的内容的时候的 dom 元素
+    */
     contact_table : '',
+
+    /** 提示信息 任何的提示信息，将显示在屏幕的右上角位置*/
+    message : '',
 
     /** 登录状态 */
     logined: false,
@@ -91,7 +95,7 @@ const vm = new Vue({
      */
 
     addContact: function () {
-      this.contactTime = '1';
+      this.contactTime = '2017-10-30';
       address = this.contactCity + ' ' + this.contactHome;
       if (this.contactTime != '' && this.contactCity != '' && this.contactName != '' && this.contactPhone != '') {
         this.contactDate.push({
@@ -101,7 +105,10 @@ const vm = new Vue({
           time: this.contactTime
         })
         this.contactShow = false;
-        console.log(this.contactDate);
+        this.contactName = '';
+        this.contactPhone = '';
+        this.contactCity = '';
+        this.contactHome = '';
       } else {
         console.log('empty');
         this.contactShow = true;
@@ -157,7 +164,7 @@ const vm = new Vue({
            }
          },
          success : function (data) {
-           console.log(data)
+           document.location.href = "/viewLetter/"+data;
          } ,
          error : function () {
            alert('error')
@@ -165,9 +172,13 @@ const vm = new Vue({
        })
      },
     pay: function (num) {
-      var tb = document.getElementById("contact_table");
-      this.contact_table = tb;
-      this.contact_page = num;
+      if(this.contactDate.length != 0) {
+        var tb = document.getElementById("contact_table");
+        this.contact_table = tb;
+        this.contact_page = num;
+      } else {
+        console.log('联系人为空。');
+      }
     },
     chageImg: function (img, i) {
       if (i == 0) {
@@ -410,3 +421,4 @@ function resetCode() {
     }
   }, 1000);
 }
+
