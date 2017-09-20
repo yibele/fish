@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\letters;
 use App\contacts;
-use Illuminate\Http\Request; 
+use App\pubLetterComment;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -54,7 +55,7 @@ class HomeController extends Controller
             echo 'admin';
         } else {
             //获取用户信息
-            $letters = $user->letter()->orderBy('lt_date')->paginate(3);
+            $letters = $user->letter()->orderBy('created_at',"DESC")->paginate(3);
 //            foreach($letter as $k=>&$v){
 //                if($k == 'status'){
 //                    switch ($v){
@@ -176,9 +177,9 @@ class HomeController extends Controller
      */
     public function viewLetter($letter_id)
     {
-        if($letterConfig = \App\letters::find($letter_id)) {
+        if ($letterConfig = \App\letters::find($letter_id)) {
             $letterConfig = $letterConfig->toArray();
-            if($letterConfig['user_id'] == Auth::user()->id) {
+            if ($letterConfig['user_id'] == Auth::user()->id) {
                 return view('private.viewLetter')->withLetterConfig($letterConfig);
             } else {
                 return view('public.error')->withMessages('您无权访问该信件。');
@@ -234,18 +235,29 @@ class HomeController extends Controller
         }
     }
 
-    private function saveLetter($letter){
+    private function saveLetter($letter)
+    {
 
         $letters = new letters();
 
-        foreach($letter as $k=>$v) {
+        foreach ($letter as $k => $v) {
             $letters->$k = $v;
         }
 
         $res = $letters->save();
-        if($res) {
+        if ($res) {
             return $letters->lid;
         }
+    }
+
+    public function commentPublicLetter ($lid,Request $request) {
+        $re = $request->post();
+        $comments = new pubLetterComment();
+        $comments->letters_lid = $lid;
+        $comments->user_name = Auth::user()->phone;
+        $comments->content = $re['content'];
+        $comments->save();
+        return redirect('/publetter/'.$lid);
     }
 }
 

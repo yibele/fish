@@ -61,7 +61,7 @@ function changeFontFamily(event, fontFamily, accesskey, lineHeight) {
 
 /**检测是否登录 */
 
-/**  保存信件 */
+/**  保存信件---将新建保存在数据库中 */
 function createLetter() {
   var data = checkLogin();
   data = eval('('+data+')');
@@ -73,7 +73,7 @@ function createLetter() {
     $lt_content = $letter_neirong.innerHTML;
     $lt_fontSize = $letter_container.style.fontSize.slice(0, -2);
     $lt_fontFamily = [$letter_neirong.getAttribute('fontid'), $letter_neirong.getAttribute('accesskey')];
-    $lt_color = $letter_container.style.color ? $letter_container.style.color : '#ffffff';
+    $lt_color = $letter_container.style.color ? $letter_container.style.color : '#000000';
     $user_id = data.userId;
     //防止csrf攻击
     $.ajaxSetup({

@@ -29,16 +29,14 @@
 
     <div id="app">
         <span v-show="message" class="messages notification is-danger is-pulled-right">
-            ${message}
         </span>
         @include('_includes.nav')
         @yield('content')
-
     </div>
 
     @stack('javascript')
         <!-- Scripts -->
-        @include('_includes.footer')
+    @include('_includes.footer')
 <script type="text/javascript" src='{{asset('js/app.js')}}'></script>
 </body>
 </html>

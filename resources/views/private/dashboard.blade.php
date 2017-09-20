@@ -18,13 +18,13 @@
             <div class='myletter_content'>
             <div class='myletter_content_menu'>
                 <div class='time' style="color: #bbbbbb;">
-                    写信日期: {{ $letter->lt_date }}
+                    写信日期: {{ $letter->created_at }}
                 </div>
                 <div class='menu'>
                     <button><a href="">修改收信人信息</a></button>
                     <button><a href="{{ route('private.editLetter',$letter->lid) }}">继续编辑</a></button>
-                    <button><a href="">续单</a></button>
-                    <button><a href="">下载信件</a></button>
+                    @if($letter->status != 0)<button><a href="">续单</a></button> @endif
+                    <button><a href="">下载信件</a></button{{----}}>
                     <button><a href="">查看信件</a></button>
                 </div>
             </div>

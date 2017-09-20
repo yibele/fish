@@ -61,7 +61,7 @@
 
 
 
-<div class="footer" style="padding-bottom : 45px;">
+<footer class="footer" style="padding-bottom : 45px;">
     <div style="display: inline-block;">
         Copyright © 2015-2017mandifish.com.蒙ICP备15003789
     </div>
@@ -86,7 +86,7 @@
         &nbsp;
         <a href="">联系我们</a>
     </div>
-</div>
+</footer>
 </div>
 
 

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\XinZhis;
 use App\Fonts;
 use App\Colors;
+use App\letters;
+use App\pubLetterComment;
+use Illuminate\Support\Facades\Cookie;
 
 class PublicController extends Controller
 {
@@ -18,7 +21,15 @@ class PublicController extends Controller
 	}
 
 	public function pubLetter () {
-		return view('public.puletter');
+        $letters = letters::all()->toArray();
+        $newLetter = [];
+        foreach($letters as &$letter) {
+            if($letter['isPublic'] == 1) {
+                $letter['lt_content'] = mb_strrchr(mb_substr($letter['lt_content'],0,150),'</div>',true)."</div>";
+                $newLetter[] = $letter;
+            }
+        }
+		return view('public.pubLetter')->withLetters($newLetter);
 	}
 	
 	public static function getXinzhis() {
@@ -50,4 +61,28 @@ class PublicController extends Controller
 	public function editLetter ($letterId) {
 		echo $letterId;
 	}
+
+	public function pubShow($lid) {
+        $letter = letters::find($lid);
+        $letter->view = $letter->view+1;
+        $letter->save();
+        $comments = pubLetterComment::where('letters_lid','=',$lid)->paginate(5);
+        return view('public.pubShow')->withLetterConfig($letter)->withComments($comments);
+    }
+
+    public function getComments ($letter_id) {
+        $comments = pubLetterComment::find($letter_id);
+        return response($comments,200);
+    }
+
+    public function addLike ($lid){
+        $letters = letters::find($lid);
+        $letters->like = $letters->like + 1;
+        if($letters->save()) {
+            Cookie::queue('like'.$lid, 'true', $minutes = 99999999, $path = null, $domain = null, $secure = false, $httpOnly = false);
+            return response('true',200);
+        } else {
+            return response('false',404);
+        }
+    }
 }
