@@ -7,7 +7,7 @@
             <div class="wrap-1">
                 <div class="letter">
                     <img v-bind:src = 'letter' id="letter" v-bind:class="trans_class" v-on:mouseenter='turn_to($event,0)' >
-                    <button class="btn1" onclick='window.location.href = "/letter/index"'>
+                    <button class="btn1" onclick='window.location.href = "/writeLetter"'>
                         写信
                     </button>
                 </div>

@@ -55,7 +55,7 @@ class HomeController extends Controller
             echo 'admin';
         } else {
             //获取用户信息
-            $letters = $user->letter()->orderBy('created_at',"DESC")->paginate(3);
+            $letters = $user->letter()->orderBy('created_at', "DESC")->paginate(3);
 //            foreach($letter as $k=>&$v){
 //                if($k == 'status'){
 //                    switch ($v){
@@ -79,7 +79,11 @@ class HomeController extends Controller
         $fontColors = PublicController::getFontColors();
         $xinzhis = PublicController::getXinzhis();
         $letters = letters::find($lid);
-        return view('private.changeLetter')->withLetters($letters)->withFonts($fonts)->withXinzhis($xinzhis)->withFontColors($fontColors);
+        if ($letters->status != 0) {
+            return view('public.error')->withMessages('该信件不在草稿状态呢，无法继续编辑');
+        } else {
+            return view('private.changeLetter')->withLetters($letters)->withFonts($fonts)->withXinzhis($xinzhis)->withFontColors($fontColors);
+        }
     }
 
     /**
@@ -90,7 +94,6 @@ class HomeController extends Controller
     public function updateLetter(Request $request)
     {
         $update = $request->post();
-        return $update;
         $letters = letters::find($update['lid']);
 
 
@@ -237,7 +240,6 @@ class HomeController extends Controller
 
     private function saveLetter($letter)
     {
-
         $letters = new letters();
 
         foreach ($letter as $k => $v) {
@@ -250,14 +252,41 @@ class HomeController extends Controller
         }
     }
 
-    public function commentPublicLetter ($lid,Request $request) {
+    public function commentPublicLetter($lid, Request $request)
+    {
         $re = $request->post();
         $comments = new pubLetterComment();
         $comments->letters_lid = $lid;
         $comments->user_name = Auth::user()->phone;
         $comments->content = $re['content'];
         $comments->save();
-        return redirect('/publetter/'.$lid);
+        return redirect('/publetter/' . $lid);
+    }
+
+    public function canclePublicLetter ($lid) {
+        $letter = letters::find($lid);
+        if($letter->user_id != Auth::user()->id) {
+            return view('public.error')->withMessages('您无权这样做');
+        } else {
+            $letter->isPublic = 0;
+            $letter->save();
+            return redirect()->action(
+                'HomeController@dashboard'
+            );
+        }
+    }
+
+    public function setPub ($lid) {
+        $letter = letters::find($lid);
+        if($letter->user_id !=Auth::user()->id) {
+            return view('public.error')->withMessages("您无权这样做");
+        } else {
+            $letter->isPublic = 1;
+            $letter->save();
+            return redirect()->action(
+                'HomeController@dashboard'
+            );
+        }
     }
 }
 

@@ -66,12 +66,12 @@ class PublicController extends Controller
         $letter = letters::find($lid);
         $letter->view = $letter->view+1;
         $letter->save();
-        $comments = pubLetterComment::where('letters_lid','=',$lid)->paginate(5);
+        $comments = pubLetterComment::where('letters_lid','=',$lid)->orderBy('created_at','DESC')->paginate(5);
         return view('public.pubShow')->withLetterConfig($letter)->withComments($comments);
     }
 
     public function getComments ($letter_id) {
-        $comments = pubLetterComment::find($letter_id);
+        $comments = pubLetterComment::find($letter_id)->orderBy('created_at','DESC');
         return response($comments,200);
     }
 

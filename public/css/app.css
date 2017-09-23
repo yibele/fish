@@ -833,7 +833,7 @@ span .head {
 }
 
 .messages {
-    position: absolute;
+    position: fixed;
     z-index: 200;
     left: 20px;
     top: 150px;

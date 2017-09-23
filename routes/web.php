@@ -52,7 +52,7 @@ Route::get('/viewLetter/{id}','HomeController@viewLetter')->name('private.viewLe
 
 Route::get('/publetter','PublicController@pubLetter')->name('public.publetter');
 
-Route::get('/publetter/{lid}','PublicController@pubShow');
+Route::get('/publetter/{lid}','PublicController@pubShow')->name('public.pubShow');
 
 Route::get('/charges',function () {
     $kefu = \App\kefu::find(1);
@@ -62,3 +62,7 @@ Route::get('/charges',function () {
 Route::get('/addLike/{lid}','PublicController@addLike');
 
 Route::post('/comment_public_letter/{lid}','HomeController@commentPublicLetter');
+
+Route::get('/canclePub/{lid}','HomeController@canclePublicLetter')->name('private.canclePub');
+
+Route::get('/setPub/{lid}','HomeController@setPub')->name('private.setPub');

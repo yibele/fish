@@ -15,7 +15,7 @@
        </div> &nbsp&nbsp&nbsp&nbsp <span id="yinsi-yikaiqi">该信件处于"隐私保护"状态，只有你登录后才能看到。若要分享给其他人，请放弃隐私保护状态。</span>
     </div>
 
-  <div id="letter_content"  style="background-image:url({{asset($letterConfig['lt_back'])}}) " >
+  <div id="letter_content"  style="background-image:url({{$letterConfig['lt_back']}}) " >
       <div id="letter_container">
           <div id="letter_neirong" name='letter_neirong'>
               {!! $letterConfig['lt_content'] !!}

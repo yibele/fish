@@ -94,6 +94,23 @@ const vm = new Vue({
 
     },
     methods: {
+        /**
+         * 提供消息
+         */
+        setMessage : function (lid,e) {
+            e.stopPropagation();
+            $.ajax({
+                url : '/editLetter/'+lid,
+                type : 'get',
+                success : function (data) {
+                    console.log(data)
+                },
+                fail : function (data) {
+                    console.log(data);
+                }
+            })
+            return false;
+        },
 
         /**
          * 公开信评论

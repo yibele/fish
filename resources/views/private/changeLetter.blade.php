@@ -33,7 +33,7 @@
         <div id="letter_content" >
             <div id="letter_container" :style="letter_content_background" >
                 <div id="letter_neirong" contenteditable="true" name='letter_neirong'>
-                    亲爱的______ :<div>&nbsp; &nbsp; 你现在在做什么呢？<br></div>
+                    {!! $letters->lt_content !!}
                 </div>
             </div>
         </div>
@@ -85,9 +85,10 @@
                 data : letter_data,
                 timeout : 15000,
                 success : function (data,status) {
+                    document.location.href = '/createContact/'+'{{ $letters->lid }}'
                 },
                 error : function (){
-
+                    vm.$data.message = '信件更新有误，请稍微重试';
                 }
             })
         }

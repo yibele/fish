@@ -16,5 +16,7 @@ class letters extends Model
         return $this->hasMany('App\pubLetterComment');
     }
 
-
+    public function letter2send () {
+        return $this->hasMany('App\letter2send');
+    }
 }

@@ -28,8 +28,12 @@
     @include("_includes.stars")
 
     <div id="app">
+
+        <transition name="slide-fade">
         <span v-show="message" class="messages notification is-danger is-pulled-right">
+            ${message}
         </span>
+        </transition>
         @include('_includes.nav')
         @yield('content')
     </div>

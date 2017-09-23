@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <div id="letter_content" style="background-image:url({{asset($letterConfig['lt_back'])}})" @click="hideComment">
+        <div id="letter_content" style="background-image:url({{$letterConfig['lt_back']}})" @click="hideComment">
             <div id="letter_container">
                 <div id="letter_neirong" name='letter_neirong'>
                     {!! $letterConfig['lt_content'] !!}
