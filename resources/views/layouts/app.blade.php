@@ -30,7 +30,7 @@
     <div id="app">
 
         <transition name="slide-fade">
-        <span v-show="message" class="messages notification is-danger is-pulled-right">
+        <span v-show="message" class="messages notification is-danger is-pulled-right" style="position:absolute;right:0px;">
             ${message}
         </span>
         </transition>

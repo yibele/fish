@@ -42,9 +42,31 @@
             $tag = $class.split(' ');
             $tag = $tag[1];
             if($tag =='On') {
+                console.log('off');
+                $.ajax({
+                    url : '/setLetterPublic/'+'{{$letterConfig['lid']}}',
+                    timeout :1500,
+                    success : function (data) {
+                        vm.$data.message = data;
+                    },
+                    fail : function () {
+                    }
+                });
+
                 $("#yinsi").html('隐私保护关闭');
                 $("#yinsi-yikaiqi").html('该信件关闭"隐私保护"状态，其他人可以通过公开信或者分享的方式看到此信件。');
             } else {
+                console.log('on');
+                $.ajax({
+                    url : '/setLetterPrivate/'+'{{$letterConfig['lid']}}',
+                    timeout:1500,
+                    success : function (data){
+                        vm.$data.message = data;
+                    },
+                    fail : function () {
+
+                    }
+                });
                 $("#yinsi").html('隐私保护开启');
                 $("#yinsi-yikaiqi").html('该信件处于"隐私保护"状态，只有你登录后才能看到。若要分享给其他人，请放弃隐私保护状态。');
 

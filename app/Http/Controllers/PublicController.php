@@ -21,15 +21,8 @@ class PublicController extends Controller
 	}
 
 	public function pubLetter () {
-        $letters = letters::all()->toArray();
-        $newLetter = [];
-        foreach($letters as &$letter) {
-            if($letter['isPublic'] == 1) {
-                $letter['lt_content'] = mb_strrchr(mb_substr($letter['lt_content'],0,150),'</div>',true)."</div>";
-                $newLetter[] = $letter;
-            }
-        }
-		return view('public.pubLetter')->withLetters($newLetter);
+        $letters = letters::where('isPublic','=','1')->get();
+		return view('public.pubLetter')->withLetters($letters);
 	}
 	
 	public static function getXinzhis() {
@@ -66,8 +59,13 @@ class PublicController extends Controller
         $letter = letters::find($lid);
         $letter->view = $letter->view+1;
         $letter->save();
+        $publetter = letters::where('isPublic','=',1)->orderBy('created_at',"DSCE")->get();
+        $publid = array();
+        foreach($publetter as $pub) {
+            $publid[]=$pub->lid;
+        }
         $comments = pubLetterComment::where('letters_lid','=',$lid)->orderBy('created_at','DESC')->paginate(5);
-        return view('public.pubShow')->withLetterConfig($letter)->withComments($comments);
+        return view('public.pubShow')->withLetterConfig($letter)->withComments($comments)->withPublid($publid);
     }
 
     public function getComments ($letter_id) {

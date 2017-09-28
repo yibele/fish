@@ -23,7 +23,8 @@
                 <span class="comment-list cursor-pointer" @click="showCommentState"><img
                         :src="commentStateImg" class="cursor-pointer" alt=""
                         style="vertical-align: middle;margin-right: 5px;"> {{count($letterConfig->comment()->get()->toArray())}}</span>
-                <button class="comment-list-button button">换一封</button>
+                <?php $key = array_search($letterConfig['lid'],$publid)+1; $nextKey = $publid[$key%count($publid)]?>
+                <a href="{{ route('public.pubShow',$nextKey) }} " style="color:#ccc"><button class="comment-list-button button">换一封</button></a>
 
                 <!-- 评论区 -->
 

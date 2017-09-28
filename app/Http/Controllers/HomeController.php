@@ -139,7 +139,7 @@ class HomeController extends Controller
         $contacts = json_decode($tmp, true);
         //获取当前信件的letter_id
         //用作后面添加 letter2send 数据库的时候的关联
-        $letter_id = $contacts[0]['letter_id'];
+        $letter_id = $contacts[0]['letters_lid'];
         // 获取添加联系人的时间.
         $now = date('Y-m-d H:i:s');
         // 获取发送
@@ -147,7 +147,7 @@ class HomeController extends Controller
 
         //从前段获得的contacts 去除 time , letter_id ;
         foreach ($contacts as &$contact) {
-            unset($contact['letter_id']);
+            unset($contact['letters_lid']);
             $sendTime[] = $contact['time'];
             unset($contact['time']);
             $contact['user_id'] = Auth::user()->id;
@@ -204,7 +204,7 @@ class HomeController extends Controller
         $letter2send = new \App\letter2send;
 
         for ($i = 0; $i < count($contacts_id); $i++) {
-            $letter2send->letter_id = $letter_id;
+            $letter2send->letters_lid = $letter_id;
             $letter2send->contacts_id = $contacts_id[$i];
             $letter2send->time = $sendTime[$i];
             $letter2send->tag = 0;
@@ -286,6 +286,28 @@ class HomeController extends Controller
             return redirect()->action(
                 'HomeController@dashboard'
             );
+        }
+    }
+
+    public function setLetterPublic($lid) {
+        $letter = letters::find($lid);
+        if($letter->user_id != Auth::user()->id) {
+            return response('您无权访问此信件',404);
+        } else {
+            $letter->isPublic = 1;
+            $letter->save();
+            return response('设置公共信件成功',200);
+        }
+    }
+
+    public function setLetterPrivate($lid) {
+        $letter = letters::find($lid);
+        if($letter->user_id != Auth::user()->id) {
+            return response('您无权访问此信件',404);
+        } else {
+            $letter->isPublic = 0;
+            $letter->save();
+            return response('取消公开信',200);
         }
     }
 }

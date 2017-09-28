@@ -192,7 +192,7 @@ const vm = new Vue({
                     'name': this.contactDate[i]['name'],
                     'phone': this.contactDate[i]['phone'],
                     'time': this.contactDate[i]['time'],
-                    'letter_id': lid
+                    'letters_lid': lid
                 }
             }
             $.ajax({

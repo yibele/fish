@@ -66,3 +66,10 @@ Route::post('/comment_public_letter/{lid}','HomeController@commentPublicLetter')
 Route::get('/canclePub/{lid}','HomeController@canclePublicLetter')->name('private.canclePub');
 
 Route::get('/setPub/{lid}','HomeController@setPub')->name('private.setPub');
+
+Route::get('/setLetterPublic/{lid}','HomeController@setLetterPublic')->name('private.setLetterPublic');
+
+Route::get('/setLetterPrivate/{lid}','HomeController@setLetterPrivate');
+
+Route::get('/updateContacts/{lid}','HomeController@updateContact');
+
