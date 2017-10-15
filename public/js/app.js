@@ -40,6 +40,7 @@ const vm = new Vue({
         contact_table: '',
 
         /** 提示信息 任何的提示信息，将显示在屏幕的右上角位置*/
+        messageShow : false,
         message: '',
 
         /** 登录状态 */
@@ -54,6 +55,9 @@ const vm = new Vue({
         comment_state: false,
         comment_like: '/img/public_letter/like.png',
         commentStateImg : '/img/public_letter/comment.png'
+
+        /** 明信片部分 */
+
     },
     computed: {
         feiyong_all: function () {
@@ -136,7 +140,7 @@ const vm = new Vue({
          */
 
         addContact: function () {
-            this.contactTime = '2017-10-30';
+            this.contactTime = $("#date").val();
             address = this.contactCity + ' ' + this.contactHome;
             if (this.contactTime != '' && this.contactCity != '' && this.contactName != '' && this.contactPhone != '') {
                 this.contactDate.push({
@@ -151,7 +155,6 @@ const vm = new Vue({
                 this.contactCity = '';
                 this.contactHome = '';
             } else {
-                console.log('empty');
                 this.contactShow = true;
             }
         },
@@ -185,6 +188,7 @@ const vm = new Vue({
          */
 
         zhifu: function (lid) {
+            var that = this;
             var list = {}
             for (var i = 0; i < this.contactDate.length; i++) {
                 list[i] = {
@@ -214,11 +218,13 @@ const vm = new Vue({
         },
         pay: function (num) {
             if (this.contactDate.length != 0) {
+                this.messageShow = false;
                 var tb = document.getElementById("contact_table");
                 this.contact_table = tb;
                 this.contact_page = num;
             } else {
-                alert('联系人不能为空，请添加联系人或者从地址铺添加');
+                this.messageShow = true;
+                this.message = '请先添加联系人，再进入下一步';
             }
         },
         chageImg: function (img, i) {
@@ -461,6 +467,13 @@ function resetCode() {
         }
     }, 1000);
 }
+
+$("#my_manfish").click(function(event) {
+    event.preventDefault();
+    var data = checkLogin();
+    console.log(data);
+})
+
 
 
 

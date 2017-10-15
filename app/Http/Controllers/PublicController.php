@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\cantpostcard;
 use App\XinZhis;
 use App\Fonts;
 use App\Colors;
@@ -83,4 +84,21 @@ class PublicController extends Controller
             return response('false',404);
         }
     }
+
+    public function postcard() {
+        $title = "创建自己的明信片";
+        return view('public.postCard')->with('title',$title)->withFonts($this->getFonts())->withFontColors($this->getFontColors())->withCantPostCards($this->getCantPostCards());
+    }
+
+    public function getCantPostCards() {
+        $newpost = array();
+        $cantpost = cantpostcard::all()->toArray();
+        for($i=0;$i<ceil(count($cantpost)/5);$i++) {
+            for($j= $i*5;$j<($i+1)*5 && $j<count($cantpost);$j++) {
+                $newpost[$i][] = $cantpost[$j];
+            }
+        }
+        return $newpost;
+    }
+
 }

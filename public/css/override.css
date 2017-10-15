@@ -98,3 +98,17 @@ h4 {
     color: #ffffff !important;
 }
 
+.dropdown-content {
+    border : 1px #333 solid;
+}
+
+.dropdown-item {
+    cursor: pointer;
+    color: #ccc;
+}
+
+span.dropdown-item:hover{
+    background-color:whitesmoke;
+    color:#0a0a0a;
+}
+

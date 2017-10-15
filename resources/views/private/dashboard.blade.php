@@ -35,7 +35,10 @@
             </div>
             <div class='myletter_content_detail'>
 
-                <div class='img'></div>
+                <a href="{{route('private.viewLetter',$letter->lid)}}"><div class='img' style="overflow:hidden;font-size:5px;padding:4px;background-image:url({{$letter['ltBackTum']}}) ;color:black">
+                    {!! $letter['lt_content'] !!}
+                </div>
+                </a>
                 <div class='content'>
                     <p>物流单号:</p>
                     @if ($letter->status == 0)

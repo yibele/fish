@@ -23,10 +23,7 @@
                 <form action="">
                     <div style="margin-bottom:10px;">
                         <p style="margin-top:10px;">请选择寄信日期: &nbsp&nbsp</p>
-                        <input type="text" class="contact_input contact_input1" id="yesr">年 &nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input style="width:100px" class=" contact_input1 contact_input" type="text" id="month"> 月&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input type="text" id="day" class="contact_input contact_input1" style="width : 90px;">日
-                        <br>
+                        <input type="text" class="contact_detail contact_input" placeholder="请选择日期" id="date" >
                     </div>
                     <div>
                         <p style="margin-top:10px;">请填写收信信息: &nbsp&nbsp</p>
@@ -39,8 +36,12 @@
                             <br>
                             <input type="text" class="contact_detail contact_input" placeholder="收信人地址" v-model="contactHome">
                             <div>
-                                <button type="button" class="button is-white" v-on:click="addContact">添加联系人</button>
+                                <button type="button" class="button is-white" v-on:click="addContact">点击添加联系人</button>
+                                <button class="button is-white" onclick="return false;">地址铺添加</button>
+                                <button class="button is-white" onclick="return false;">由他人填写</button>
+                                <transition name="slide-fade">
                                 <p class="help is-danger" v-show="contactShow">请填写完整信息</p>
+                                </transition>
                             </div>
                         </div>
                         <hr>
@@ -62,8 +63,7 @@
                                 <td><button type="button" class="button is-link" @click="removeCon(index)">删除</button></td>
                             </tr>
                         </table>
-                        <button class="button is-white" onclick="return false;">地址铺添加</button>
-                        <button class="button is-white" onclick="return false;">由他人填写</button>
+
                         <nav class="pagination" role="navigation" aria-label="pagination" style="display:inline-block;width:400px;float:right;margin-top:10px">
                             <a href="#" class="pagination-previous pagination-border-reset">上一页</a>
                             <ul class="pagination-list" style="display:inline-block">
@@ -101,13 +101,14 @@
 
 
 
-        @push('style')
+        @push('style')t
         <link rel="stylesheet" href="{{asset('css/contactUpdate.css')}}"> @endpush @push('javascript')
         @endpush
         @push('javascript')
         <script src="{{asset('js/jquery.slides.min.js')}}"></script>
         <script src="{{asset('js/updateContact.js')}}"></script>
         @endpush
+        <script src="{{asset('js/laydate/laydate.js')}}"></script>
         <script>
             $(function() {
                 $('#slides').slidesjs({
@@ -122,6 +123,11 @@
                     }
                 });
             });
+
+            laydate.render({
+                elem: '#date',
+                theme: '#393d49'
+            })
         </script>
 @endsection
 

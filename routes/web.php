@@ -73,3 +73,8 @@ Route::get('/setLetterPrivate/{lid}','HomeController@setLetterPrivate');
 
 Route::get('/updateContacts/{lid}','HomeController@updateContact');
 
+Route::get('/manage','adminController@index');
+
+Route::get('/postCard','publicController@postcard')->name('public.postCard');
+
+

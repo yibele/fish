@@ -16,10 +16,9 @@
     <div class="index_menu">
         <ul>
             <li><a href="/writeLetter">写信</a></li>
-            <li><a href="">寄明信片</a></li>
+            <li><a href="/postCard">寄明信片</a></li>
             <li><a href="/publetter">看公开信</a></li>
             <li><a href="/shaidan/index">晒单</a></li>
-            <li><a href="/my_manfish">我的慢递</a></li>
             <li><a href="/charges">资费及帮助</a></li>
         </ul>
     </div>

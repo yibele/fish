@@ -18,7 +18,7 @@
     border-radius:5px;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
-    background-color:inherit;
+    background-color:#000;
     padding-left: 20px;
     font-weight: bold;
     
@@ -83,7 +83,109 @@
 }
 .contact_border {
     border: 1px #464646 solid;
-
+}
 .contact_border_bottom {
     border-bottom:1px #464646 solid;
+}
+
+
+
+
+.input {
+    height : 47px;
+    background-color : #000 !important;
+    border: 1px solid #333;
+    border-radius: 3px;
+    padding: 8px 6px;
+    color: #ccc;
+    font-weight: bold !important;
+    font-size: 13px;
+    position: relative;
+}
+
+.select {
+    heigth : 47px;
+    corlor : #ccc;
+    font-weight:bold;
+    cursor: pointer;
+    position: relative;
+    border : none !important;
+}
+.select .input:after, .select .input:before {
+    content: '';
+    position: absolute;
+    left: calc(100% - 20px);
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+
+}
+.select .input:before {
+    border-top: 5px solid #333;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    top: 50%;
+}
+.select .input:after {
+    border-top: 5px solid #fff;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    top: calc(50% - 1px);
+}
+.select-options {
+    background-color :#000;
+    border: 1px solid #333;
+    position: absolute;
+    width: 100%;
+    border-radius: 3px;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    padding-top: 47px;
+    display: none;
+    overflow: hidden;
+}
+.select-options.visible {
+    display: block;
+}
+.select-options ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.select-options ul li {
+    padding: 8px 50px 8px 6px;
+    border-bottom: 1px solid #333;
+    font-size: 13px;
+    color: #ccc;
+    font-weight: 300;
+    position: relative;
+    overflow: hidden;
+}
+.select-options ul li:hover {
+    background-color: #f2f2f2;
+}
+.select-options ul li:last-child {
+    border-bottom: 0;
+}
+.select-options ul li.selected > span:first-child {
+    color: orange;
+}
+.select-options ul li.selected:after {
+    content: '';
+    width: 5px;
+    height: 10px;
+    border: 1px solid orange;
+    border-right: 0;
+    border-bottom: 0;
+    left: calc(100% - 20px);
+    top: 50%;
+    transform: translateY(-50%) rotate(-135deg);
+    position: absolute;
+}
+.select-options span {
+    font-weight:bold;
+}
+.select:not(.is-multiple)::after {
+    border : none !important;
 }

@@ -75,6 +75,7 @@ function createLetter() {
     $lt_fontFamily = [$letter_neirong.getAttribute('fontid'), $letter_neirong.getAttribute('accesskey')];
     $lt_color = $letter_container.style.color ? $letter_container.style.color : '#000000';
     $user_id = data.userId;
+    $ltBackTum = $("img.active").attr('src');
     //防止csrf攻击
     $.ajaxSetup({
       headers: {
@@ -88,7 +89,8 @@ function createLetter() {
       'lt_content':$lt_content,
       'lt_fontSize':$lt_fontSize,
       'lt_fontFamily':$lt_fontFamily,
-      'lt_color':$lt_color
+      'lt_color':$lt_color,
+        'ltBackTum' : $ltBackTum
     }
 
     $.ajax({

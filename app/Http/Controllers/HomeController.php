@@ -51,8 +51,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         if ($user->role == 'admin') {
-            //提交到管理员界面
-            echo 'admin';
+            return redirect()->action('adminController@index');
         } else {
             //获取用户信息
             $letters = $user->letter()->orderBy('created_at', "DESC")->paginate(3);
@@ -228,6 +227,7 @@ class HomeController extends Controller
             'lt_fontid' => $post['lt_fontFamily'][0],
             'lt_accesskey' => $post['lt_fontFamily'][1],
             'lt_color' => $post['lt_color'],
+            'ltBackTum' =>$post['ltBackTum'],
             'user_id' => Auth::user()->id,
         ];
 

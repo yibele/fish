@@ -320,7 +320,6 @@ input[type=radio] {
 
 .nav1 .index_menu {
     line-height: 42px;
-    width: 575px;
     display: block;
 }
 
@@ -356,6 +355,7 @@ input[type=radio] {
 
 .menu_active {
     display: flex;
+    background-color:#000;
 }
 
 .letter_img_lt1 {
@@ -375,6 +375,15 @@ input[type=radio] {
     height: 189px;
 }
 
+.postcard_menu .btn_lf {
+    cursor: pointer;
+    padding-top: 75px;
+    padding-left: 20px;
+    width: 80px;
+    height: 189px;
+    color : #c5c5c5;
+}
+
 .letter_img_lt1 .active {
     border: 2px red solid;
 }
@@ -385,6 +394,15 @@ input[type=radio] {
     padding-left: 40px;
     width: 80px;
     height: 189px;
+}
+.postcard_menu .btn_rt {
+    cursor: pointer;
+    padding-top: 75px;
+    padding-left: 30px;
+    width: 80px;
+    height: 189px;
+    color : #c5c5c5;
+
 }
 
 .letter_img_detail {
@@ -815,7 +833,7 @@ span .head {
 }
 
 .slidesjs-control {
-    width: 940px !important;
+    width: 960px !important;
     height: 189px !important;
     text-align: center;
 }
@@ -1008,4 +1026,94 @@ body.IE7 .Switch.Round {
 .charges_detail h4 {
     font-size : 20px;
     color : #F0F0F0;
+}
+
+
+/* 明信片不可编辑部分 */
+.postcard_menu {
+    height : 187px;
+    width : 1120px;
+    border : 1px solid #333333;
+    border-top:none;
+}
+
+.postcard_button {
+    padding-top : 20px;
+}
+
+.postcard_buke_background_img {
+    position : absolute;
+    background-size : cover;
+    background-repeat : no-repeat;
+    z-index: 30;
+    height : 520px;
+    width: 770px;
+}
+.postcard_mask {
+    position : absolute;
+    z-index:40;
+    opacity : 0.6;
+    width: 1120px;
+    height : 520px;
+    background-color : #333333;
+}
+.postcard_buke_background_content {
+    position : relative;
+    left : 0px;
+    z-index:50;
+    background-color : #ffffff;
+    height : 520px;
+    width : 770px;
+    float : right;
+}
+.buke_stamp {
+    position : absolute;
+    background-size : cover;
+    background-repeat : no-repeat;
+    z-index : 50;
+    height : 168px;
+    margin-top : 21px;
+    margin-right:21px;
+    width:125px;
+    right:0;
+    top : 0;
+}
+.buke_postmark {
+    position : absolute;
+    background-size : cover;
+    background-repeat : no-repeat;
+    bottom : 0px;
+    right : 0px;
+    margin-bottom : 45px;
+    margin-right : 45px;
+    z-index : 50;
+    width : 112px;
+    height : 111px;
+    border : 1px #333 solid;
+}
+.buke_postcard_text {
+    position : absolute;
+    top : 137px;
+    left : 100px;
+    width : 600px;
+    height : 300px;
+}
+
+.postcard_front {
+    z-index : 50;
+}
+.postcard_menu_detail {
+    width:960px;
+}
+
+.postcard_tums {
+    height:102px;
+    width:152px;
+    margin-right:29px;
+    margin-top : 43px;
+    border : 1px #333 solid;
+}
+
+.postcard_tums {
+    display:inline-block;
 }

@@ -31,7 +31,7 @@
         @include('public.letterMenu')
 
         <div id="letter_content" >
-            <div id="letter_container" :style="letter_content_background" >
+            <div id="letter_container" style="background-image: url({{$letters->lt_back}})">
                 <div id="letter_neirong" contenteditable="true" name='letter_neirong'>
                     {!! $letters->lt_content !!}
                 </div>

@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/start.css')}}">
     <script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js?"></script>
     <script type="text/javascript" src="http://cdn.webfont.youziku.com/youziku.justtime.js"></script>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <title></title>
     @stack('style')
 </head>
@@ -30,7 +31,7 @@
     <div id="app">
 
         <transition name="slide-fade">
-        <span v-show="message" class="messages notification is-danger is-pulled-right" style="position:absolute;right:0px;">
+        <span v-show="messageShow" class="messages notification is-danger is-pulled-right" style="position:absolute;right:0px;">
             ${message}
         </span>
         </transition>

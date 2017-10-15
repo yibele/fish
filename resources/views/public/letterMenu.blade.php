@@ -1,5 +1,6 @@
 <div class="letter_img_lt menu_active" id="xinzhi">
   <div class='btn_lf slidesjs-previous  slidesjs-navigation'>
+    <i class="fa fa-chevron-left fa-3x" aria-hidden="true"></i>
   </div>
 
   @foreach($xinzhis as $x)
@@ -11,6 +12,7 @@
   @endforeach
 
   <div class="btn_rt slidesjs-next  slidesjs-navigation">
+    <i class="fa fa-chevron-right fa-3x" aria-hidden="true"></i>
   </div>
 </div>
 
