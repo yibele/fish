@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 20/09/2017 19:50:48
+ Date: 15/10/2017 15:34:56
 */
 
 SET NAMES utf8mb4;
@@ -28,6 +28,32 @@ CREATE TABLE `admin` (
   `loginTime` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for cantpostcards
+-- ----------------------------
+DROP TABLE IF EXISTS `cantpostcards`;
+CREATE TABLE `cantpostcards` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `background` varchar(64) DEFAULT NULL COMMENT '文字背景图片',
+  `image` varchar(64) DEFAULT NULL COMMENT '信纸图片',
+  `stamp` varchar(64) DEFAULT NULL,
+  `postmark` varchar(64) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of cantpostcards
+-- ----------------------------
+BEGIN;
+INSERT INTO `cantpostcards` VALUES (1, '#000000', 'img/cantpostcard/images/mxp1.jpg', 'img/cantpostcard/stamps/stamp1.png', NULL, NULL, NULL);
+INSERT INTO `cantpostcards` VALUES (2, '#000000', 'img/cantpostcard/images/mxp2.jpg', 'img/cantpostcard/stamps/stamp1.png', NULL, NULL, NULL);
+INSERT INTO `cantpostcards` VALUES (3, '#000000', 'img/cantpostcard/images/mxp3.jpg', 'img/cantpostcard/stamps/stamp1.png', NULL, NULL, NULL);
+INSERT INTO `cantpostcards` VALUES (4, '#000000', 'img/cantpostcard/images/mxp4.jpg', 'img/cantpostcard/stamps/stamp1.png', NULL, NULL, NULL);
+INSERT INTO `cantpostcards` VALUES (5, '#000000', 'img/cantpostcard/images/mxp5.jpg', 'img/cantpostcard/stamps/stamp1.png', NULL, NULL, NULL);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for colors
@@ -64,7 +90,7 @@ CREATE TABLE `contacts` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of contacts
@@ -80,6 +106,13 @@ INSERT INTO `contacts` VALUES (10, 1, '格勒', '18610597754', '内蒙古赤峰�
 INSERT INTO `contacts` VALUES (11, 1, '伊布', '18610597754', '内蒙古赤峰市_天撒谎女真', '2017-09-14 07:57:27', '2017-09-14 07:57:27');
 INSERT INTO `contacts` VALUES (12, 1, '伊布', '18610597754', '呵呵_呵呵', '2017-09-16 04:06:54', '2017-09-16 04:06:54');
 INSERT INTO `contacts` VALUES (13, 1, 'test', 'test', 'test_test', '2017-09-16 04:11:38', '2017-09-16 04:11:38');
+INSERT INTO `contacts` VALUES (14, 1, 'gele_yibu', '18610597754', '海淀区_首都师范大学', '2017-09-28 18:46:45', '2017-09-28 18:46:45');
+INSERT INTO `contacts` VALUES (15, 1, 'gele_yibu', '18610597754', '海淀区_首都师范大学', '2017-09-28 18:46:48', '2017-09-28 18:46:48');
+INSERT INTO `contacts` VALUES (16, 1, 'gele_yibu', '18610597754', '海淀区_首都师范大学', '2017-09-28 18:46:59', '2017-09-28 18:46:59');
+INSERT INTO `contacts` VALUES (17, 1, 'gele_yibu', '18610597754', '海淀区_首都师范大学', '2017-09-28 18:49:54', '2017-09-28 18:49:54');
+INSERT INTO `contacts` VALUES (18, 1, 'yibu_gele', '18610597754', 'beijing_beijing', '2017-09-28 18:50:36', '2017-09-28 18:50:36');
+INSERT INTO `contacts` VALUES (19, 1, 'yibu_gele', '18610597754', 'beijing_beijing', '2017-09-28 18:51:56', '2017-09-28 18:51:56');
+INSERT INTO `contacts` VALUES (20, 1, 'yibu_gele', '18610597754', 'beijing_beijing', '2017-09-28 19:30:41', '2017-09-28 19:30:41');
 COMMIT;
 
 -- ----------------------------
@@ -140,21 +173,22 @@ COMMIT;
 DROP TABLE IF EXISTS `letter2sends`;
 CREATE TABLE `letter2sends` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `letter_id` int(11) DEFAULT NULL COMMENT '信件id',
+  `letters_lid` int(11) DEFAULT NULL COMMENT '信件id',
+  `expressNum` varchar(24) DEFAULT NULL COMMENT '快递编码',
+  `time` date DEFAULT NULL COMMENT '创建发送列表时间',
   `contacts_id` int(11) DEFAULT NULL COMMENT '信件对应的联系人',
-  `time` date DEFAULT NULL COMMENT '发送给联系人的地址',
+  `time2send` date DEFAULT NULL COMMENT '发送给联系人的时间',
   `tag` tinyint(4) unsigned zerofill DEFAULT NULL COMMENT '信件是否已发送',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of letter2sends
 -- ----------------------------
 BEGIN;
-INSERT INTO `letter2sends` VALUES (1, 1040, 10, '2017-10-30', NULL);
-INSERT INTO `letter2sends` VALUES (2, 1041, 11, '2017-10-30', 0000);
-INSERT INTO `letter2sends` VALUES (3, 1049, 12, '2017-10-30', 0000);
-INSERT INTO `letter2sends` VALUES (4, 1050, 13, '2017-10-30', 0000);
+INSERT INTO `letter2sends` VALUES (1, 1053, NULL, NULL, 1, '2017-09-21', 0000);
+INSERT INTO `letter2sends` VALUES (2, 1056, NULL, '2017-10-30', 19, NULL, 0000);
+INSERT INTO `letter2sends` VALUES (3, 1057, NULL, '2017-10-30', 20, NULL, 0000);
 COMMIT;
 
 -- ----------------------------
@@ -181,17 +215,21 @@ CREATE TABLE `letters` (
   `comment` int(11) DEFAULT NULL COMMENT '设置为公开信时候的留言数量',
   `ltBackTum` varchar(64) DEFAULT NULL COMMENT '信纸背景图片缩略图',
   PRIMARY KEY (`lid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1053 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1060 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of letters
 -- ----------------------------
 BEGIN;
-INSERT INTO `letters` VALUES (1048, 1, NULL, NULL, 1, NULL, '亲爱的______ :\n      <div>&nbsp; &nbsp; 你现在在做什么呢？我有点想念你！请你早点回复我的电话。</div>', 24, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#000', 'img/xinzhi/xinzhi_3.jpg', '2017-09-20 11:44:27', '2017-09-14 09:04:30', 4, 275, 10, NULL);
-INSERT INTO `letters` VALUES (1049, 1, NULL, NULL, 1, NULL, '亲爱的哈哈哈 :\n      <div>&nbsp; &nbsp; 我现在做的是测试。</div>', 24, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#000', 'img/xinzhi/xinzhi_3.jpg', '2017-09-19 17:13:39', '2017-09-16 04:06:38', 1, 49, NULL, NULL);
-INSERT INTO `letters` VALUES (1050, 1, NULL, NULL, 1, NULL, '亲爱的______ :\n      <div>&nbsp; &nbsp; 我现在在测试这个东西。</div>', 24, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#000', 'img/xinzhi/xinzhi_3.jpg', '2017-09-19 16:48:16', '2017-09-16 04:08:44', 17, 59, NULL, NULL);
-INSERT INTO `letters` VALUES (1051, 1, NULL, NULL, NULL, NULL, '亲爱的______ :', 24, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#000000', '\"/img/xinzhi/xinzhi_1.jpg\"', '2017-09-19 08:13:20', '2017-09-19 08:13:20', NULL, NULL, NULL, NULL);
-INSERT INTO `letters` VALUES (1052, 1, NULL, NULL, NULL, NULL, '亲爱的______ :', 24, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#000000', '\"/img/xinzhi/xinzhi_1.jpg\"', '2017-09-19 16:19:57', '2017-09-19 16:19:57', NULL, NULL, NULL, NULL);
+INSERT INTO `letters` VALUES (1051, 1, NULL, 1, 1, NULL, '亲爱的______ :', 24, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#000000', '\"/img/xinzhi/xinzhi_1.jpg\"', '2017-09-29 12:36:08', '2017-09-19 08:13:20', 1, 80, NULL, NULL);
+INSERT INTO `letters` VALUES (1052, 1, NULL, 2, 0, NULL, '亲爱的______ :', 24, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#000000', '\"/img/xinzhi/xinzhi_1.jpg\"', '2017-09-28 18:45:32', '2017-09-19 16:19:57', 1, 32, NULL, NULL);
+INSERT INTO `letters` VALUES (1053, 1, NULL, NULL, 1, NULL, '亲爱的______ :', 24, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#000000', '\"/img/xinzhi/xinzhi_1.jpg\"', '2017-09-29 12:36:11', '2017-09-21 11:00:38', 1, 55, NULL, NULL);
+INSERT INTO `letters` VALUES (1054, 1, NULL, NULL, 1, NULL, '亲爱的______ :\n                <div>&nbsp; &nbsp; 修改信件测试。查看信件能不能完成修改.</div><div>如果说现在所做的事情，都是可以去改变的话，那么这个事情就是非常的重要的了。</div>', 24, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#000000', '\"/img/xinzhi/xinzhi_1.jpg\"', '2017-09-29 12:35:47', '2017-09-21 14:09:41', 1, 16, NULL, NULL);
+INSERT INTO `letters` VALUES (1055, 1, NULL, NULL, NULL, NULL, '亲爱的______ :', 31, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#000000', '\"/img/xinzhi/xinzhi_5.jpg\"', '2017-09-28 17:53:22', '2017-09-28 17:53:22', NULL, NULL, NULL, NULL);
+INSERT INTO `letters` VALUES (1056, 1, NULL, NULL, 1, NULL, '亲爱的______ : \n      <div>&nbsp; &nbsp; 公开信测试。</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;----伊布</div><div>我现在正在做测试</div><div><span style=\"font-style: normal; font-weight: bold;\">我现在正在做测试</span><br></div><div><span style=\"font-style: normal; font-weight: bold;\">我现在正在做测试</span><span style=\"font-style: normal; font-weight: bold;\"><br></span></div><div><span style=\"font-style: normal; font-weight: bold;\">我现在正在做测试</span><span style=\"font-style: normal; font-weight: bold;\"><br></span></div><div><span style=\"font-style: normal; font-weight: bold;\">我现在正在做测试</span><span style=\"font-style: normal; font-weight: bold;\"><br></span></div><div><span style=\"font-style: normal; font-weight: bold;\">我现在正在做测试</span><span style=\"font-style: normal; font-weight: bold;\"><br></span></div><div><span style=\"font-style: normal; font-weight: bold;\">我现在正在做测试</span><span style=\"font-style: normal; font-weight: bold;\"><br></span></div><div><span style=\"font-style: normal; font-weight: bold;\">我现在正在做测试</span><span style=\"font-style: normal; font-weight: bold;\"><br></span></div><div><span style=\"font-style: normal; font-weight: bold;\">我现在正在做测试</span></div>', 24, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#ffffff', '\"/img/xinzhi/xinzhi_1.jpg\"', '2017-09-29 12:35:18', '2017-09-28 18:46:33', NULL, 6, NULL, NULL);
+INSERT INTO `letters` VALUES (1057, 1, NULL, NULL, 1, NULL, '亲爱的______ :', 24, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#000000', '\"/img/xinzhi/xinzhi_1.jpg\"', '2017-09-29 12:35:16', '2017-09-28 19:30:20', NULL, 4, NULL, NULL);
+INSERT INTO `letters` VALUES (1058, 1, NULL, NULL, 1, NULL, '亲爱的______ :', 24, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#000000', '\"/img/xinzhi/xinzhi_2.jpg\"', '2017-09-29 12:35:15', '2017-09-28 20:32:46', NULL, 2, NULL, NULL);
+INSERT INTO `letters` VALUES (1059, 1, NULL, NULL, 1, NULL, '亲爱的______ :', 24, '19607', 'a28d6bc9a592429e93378a6001f9e547', '#ffffff', '\"/img/xinzhi/xinzhi_2.jpg\"', '2017-09-29 12:35:14', '2017-09-28 20:35:25', NULL, 2, NULL, 'http://localhost:8000/img/xinzhi/xinzhi_2_tum.jpg');
 COMMIT;
 
 -- ----------------------------
@@ -297,26 +335,21 @@ CREATE TABLE `pub_letter_comments` (
   `letters_lid` int(11) DEFAULT NULL COMMENT '公开信的lid',
   `user_name` varchar(32) DEFAULT NULL COMMENT '评论用户的姓名',
   `content` text COMMENT '评论详情',
-  `created_at` date DEFAULT NULL COMMENT '评论时间',
-  `updated_at` date DEFAULT NULL COMMENT '更新时间',
+  `created_at` datetime DEFAULT NULL COMMENT '评论时间',
+  `updated_at` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pub_letter_comments
 -- ----------------------------
 BEGIN;
-INSERT INTO `pub_letter_comments` VALUES (1, 1048, '18610597754', '这个信件写的真不错', NULL, NULL);
-INSERT INTO `pub_letter_comments` VALUES (2, 1048, '18610597754', '这个号', NULL, NULL);
-INSERT INTO `pub_letter_comments` VALUES (4, 1049, '18610597754', '测试', '2017-09-19', '2017-09-19');
-INSERT INTO `pub_letter_comments` VALUES (5, 1049, '18610597754', '1', '2017-09-19', '2017-09-19');
-INSERT INTO `pub_letter_comments` VALUES (6, 1049, '18610597754', '1', '2017-09-19', '2017-09-19');
-INSERT INTO `pub_letter_comments` VALUES (7, 1049, '18610597754', '3', '2017-09-19', '2017-09-19');
-INSERT INTO `pub_letter_comments` VALUES (8, 1049, '18610597754', '2', '2017-09-19', '2017-09-19');
-INSERT INTO `pub_letter_comments` VALUES (9, 1049, '18610597754', '4', '2017-09-19', '2017-09-19');
-INSERT INTO `pub_letter_comments` VALUES (10, 1049, '18610597754', '5', '2017-09-19', '2017-09-19');
-INSERT INTO `pub_letter_comments` VALUES (11, 1049, '18610597754', '6', '2017-09-19', '2017-09-19');
-INSERT INTO `pub_letter_comments` VALUES (12, 1049, '18610597754', '7', '2017-09-19', '2017-09-19');
+INSERT INTO `pub_letter_comments` VALUES (13, 1051, '18610597754', '进行测试', '2017-09-21 00:00:00', '2017-09-21 00:00:00');
+INSERT INTO `pub_letter_comments` VALUES (14, 1051, '18610597754', '进行测试', '2017-09-21 00:00:00', '2017-09-21 00:00:00');
+INSERT INTO `pub_letter_comments` VALUES (15, 1051, '18610597754', '时间测试', '2017-09-21 13:00:35', '2017-09-21 13:00:35');
+INSERT INTO `pub_letter_comments` VALUES (16, 1051, '18610597754', '测试', '2017-09-28 10:56:33', '2017-09-28 10:56:33');
+INSERT INTO `pub_letter_comments` VALUES (17, 1053, '18610597754', '觉得这封信很有意义，谢谢你让我看到了以后怎么对待自己，对待自己的家人。感谢你！', '2017-09-28 20:09:47', '2017-09-28 20:09:47');
+INSERT INTO `pub_letter_comments` VALUES (18, 1053, '18610597754', '觉得这封信很有意义，谢谢你让我看到了以后怎么对待自己，对待自己的家人。感谢你！觉得这封信很有意义，谢谢你让我看到了以后怎么对待自己，对待自己的家人。感谢你！觉得这封信很有意义，谢谢你让我看到了以后怎么对待自己，对待自己的家人。感谢你！觉得这封信很有意义，谢谢你让我看到了以后怎么对待自己，对待自己的家人。感谢你！', '2017-09-28 20:09:57', '2017-09-28 20:09:57');
 COMMIT;
 
 -- ----------------------------
@@ -362,6 +395,21 @@ CREATE TABLE `service` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Table structure for shaidan
+-- ----------------------------
+DROP TABLE IF EXISTS `shaidan`;
+CREATE TABLE `shaidan` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `img_tum` varchar(265) DEFAULT NULL COMMENT '缩略图',
+  `like` int(10) unsigned DEFAULT NULL COMMENT '喜欢的数量',
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
+  `content` varchar(0) DEFAULT NULL COMMENT '信件晒单内容',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
 -- Table structure for user_like_letter
 -- ----------------------------
 DROP TABLE IF EXISTS `user_like_letter`;
@@ -394,8 +442,8 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES (1, 0, 'yibele', '18610597754', 'user', '$2y$10$cbmRRdtxN1IFLhVNJofIMuD8JU1xCMatRqUeMd3PExDY.r14N.YEO', 'mqwb8CKh9wRjedqiWNyPfKPOW0xrItJv59a2Hk0aaR46NeL92KYFVVhM3cUH', '2017-09-07 14:04:34', '2017-09-07 14:04:34');
-INSERT INTO `users` VALUES (2, 0, 'nhia', '18610597755', 'admin', '$2y$10$SXu6ZQuUIFLnvlGUfj6KCevMblLkhT8J4OCc.k5xw8YrsmC4C0vlm', 'ikqWaQpvcnDnGOfyABdtmjryFoVQUm5XbOvKwvf3mxuC6hCtyQwRhrE6mbF4', '2017-09-08 07:15:15', '2017-09-08 07:15:15');
+INSERT INTO `users` VALUES (1, 0, 'yibele', '18610597754', 'auth', '$2y$10$cbmRRdtxN1IFLhVNJofIMuD8JU1xCMatRqUeMd3PExDY.r14N.YEO', '3HvBv3gVKrhVv8DtnqmYYKesM3QMZoU4XVM7VOEaHm08v5tWDtxWviApA2BK', '2017-09-07 14:04:34', '2017-09-07 14:04:34');
+INSERT INTO `users` VALUES (2, 0, 'nhia', '123123', 'admin', '$2y$10$SXu6ZQuUIFLnvlGUfj6KCevMblLkhT8J4OCc.k5xw8YrsmC4C0vlm', 'ikqWaQpvcnDnGOfyABdtmjryFoVQUm5XbOvKwvf3mxuC6hCtyQwRhrE6mbF4', '2017-09-08 07:15:15', '2017-09-08 07:15:15');
 COMMIT;
 
 -- ----------------------------
