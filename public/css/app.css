@@ -274,8 +274,8 @@ input[type=radio] {
 
 .letter_menu ul li {
     float: left;
+    padding-top : 10px;
     list-style: none;
-    line-height: 38px;
     width: 111px;
     height: 38px;
     border-right: 2px #333333 solid;
@@ -722,11 +722,19 @@ span .head {
 }
 
 #slider_container {
+    
     font-size: 16px;
     color: #515151;
     width: 1000px;
-    height: 100px;
-    padding: 40px;
+    padding: 40px 0px;
+    height : 100px;
+}
+
+#tianjia {
+    flex-wrap: wrap;
+}
+#slider_container label{
+    margin-left : 40px;
 }
 
 #amount {
@@ -741,11 +749,24 @@ span .head {
     margin-left: 20px;
 }
 
-#slider {
+.amount {
+    color: #ccc;
+    border: 1px #515151 solid;
+    width: 58px;
+    height: 27px;
+    background-color: #000000;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.slider {
     display: inline-block;
     margin-left: 20px;
     margin-right: 20px;
 }
+
 
 .ui-slider-horizontal .ui-slider-handle {
     height: 22px;
@@ -1118,11 +1139,11 @@ body.IE7 .Switch.Round {
     border : 1px #333 solid;
 }
 .buke_postcard_text {
-    position : absolute;
+    position : relative;
     top : 137px;
     left : 100px;
-    width : 600px;
-    height : 300px;
+    max-width:600px;
+    max-height:500px;
 }
 
 .postcard_front {
@@ -1161,4 +1182,29 @@ body.IE7 .Switch.Round {
 }
 .colorpicker {
     z-index:200
+}
+
+.shunxu {
+    border : 1px #333 solid;
+    padding : 5px 10px;
+    margin-left : 6px;
+    border-radius: 5px;
+}
+.ui-slider-horizontal .ui-slider-handle {
+    top : -0.44em !important;
+}
+
+.expand {
+    display:none;
+    width: 20px;
+    position: absolute;
+    bottom : -10px;
+    right: -10px;
+}
+.delete_icon {
+    display:none;
+    position : absolute;
+    width:20px;
+    top : -10px;
+    right : -10px;
 }

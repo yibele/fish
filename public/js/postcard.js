@@ -35,10 +35,38 @@ $(function() {
     values: 1,
     slide: function (event, ui) {
       $("#amount").val(ui.value);
-      console.log(ui.value)
       $("#postcard_content_cant").css('fontSize', ui.value);
     }
   })
+
+  $('#opacity').slider({
+    range: 'min',
+    min: 2,
+    max: 100,
+    create: function(event, ui) {
+      $(this).slider('value','100')
+      $("#opacity_amount").val('100%');
+    },
+    slide: function (event, ui) {
+      $("#opacity_amount").val(ui.value+'%');
+      $("#buke_postcard_text").css('opacity', ui.value/100);
+    }
+  })
+
+  $('#xuanzhuan').slider({
+    range: 'min',
+    min: -50,
+    max: 50,
+    values: 100,
+    create: function(event, ui) {
+      $("#xuanzhuan_amount").val('0deg');
+    },
+    slide: function (event, ui) {
+      $("#xuanzhuan_amount").val(ui.value+' deg');
+      $("#buke_postcard_text").css('transform', "rotate("+ui.value+"deg)");
+    }
+  })
+
   $("#amount").val($('#slider').slider('value'))
   $('#postcard_content_cant').css('fontSize', $('#slider').slider('value'))
 })
@@ -96,6 +124,9 @@ function show_cate_hide_text () {
   
 }
 
+/**
+ * 颜色相关
+ */
 $('#letter_all_colors').ColorPicker({
   onShow: function(colpkr) {
     $(colpkr).fadeIn(200);
@@ -112,7 +143,6 @@ $('#letter_all_colors').ColorPicker({
 })
 
 $(".letter_color").click(function() {
-  console.log('click');
   var color = this.style.backgroundColor;
   var letter_container = document.getElementById('#buke_postcard_text');
   letter_container.style.color = color;

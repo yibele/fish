@@ -36,7 +36,7 @@
 <div class="letter_img_lt" id="zihao">
   <div id="slider_container">
     <label for="slider" style=' display:inline-block;margin-right : 20px;color:#ccc;font-size : 16px;'>字号</label> -
-    <div id="slider"></div> +
+    <div id="slider" class="slider"></div> +
     <input type="text" id='amount' readonly style='display:inline-block'>
   </div>
 </div>

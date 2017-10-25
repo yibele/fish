@@ -115,6 +115,10 @@ const vm = new Vue({
         this.postcard_step == 2;
       },
 
+      showStamps : function(e){
+        console.log('haha')
+        this.postcard_step = 2;
+      },
     /**
      * 点击文字之后，显示文字编辑菜单。
      */
@@ -339,12 +343,17 @@ window.onload = function() {
   $(".buke_stamp").draggable({cursor: "move",containment: "parent" });
 
   $("#buke_postcard_text").bind('dblclick',function(e) {
-    $(this).css('cursor','move').attr('contenteditable','false').css('border','2px #ccc dashed').draggable();
+    $(this).css('cursor','move').css('border','2px #ccc dashed').draggable({ containment : 'parent'}).resizable();
+    $(".delete_icon").fadeIn();
+    $(".expand").fadeIn();
     $(this).draggable("option", "disabled", false )
+    $(this).resizable("option", "disabled", false )
   })
   $("#postcard_buke_background_content").on('click',function(e) {
     if(e.target.id != 'buke_postcard_text') {
-      $("#buke_postcard_text").css('cursor','text').attr('contenteditable','true').css('border','none').draggable("option", "disabled", true );
+      $(".delete_icon").fadeOut();
+      $(".expand").fadeOut();
+      $("#buke_postcard_text").css('cursor','text').css('border','none').draggable("option", "disabled", true );
     }
   })
 

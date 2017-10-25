@@ -1,7 +1,9 @@
 
-  @extends('layouts.app') @section('content')
-  <div class="container1" id="postCard" style="">
+ 
 
+  @extends('layouts.app') @section('content')
+
+  <div class="container1" id="postCard" style="">
     <!-- 明信片总体选择-->  
     <div class="letter_menu" id="postcard_category"  v-show="postcard_step == 0" >
       <!-- drop down button -->
@@ -34,31 +36,19 @@
       </div>
     </div>
 
+
     <div class="letter_menu" v-show="postcard_step == 2">
       <div class='dropdown is-active'>
         <ul>
           <li class="menu-item active">更改图片<span class="fa fa-sort-desc"></span></li>
           <li class="menu-item">more<span class="fa fa-sort-desc"></span></li>
         </ul>
-        <div style="width:750px">
-          <ul style="margin-left: 360px; line-height: 38px;">
-            <li class="float_rt" style="padding-top: 8px;">
-              <img src="img/letter/letter_menu_13.png" alt="">
-            </li>
-            <li class="float_rt" style="padding-top: 8px;">
-              <img src="img/letter/letter_menu_11.png" alt="">
-            </li>
-            <li class="float_rt" style="padding-top: 8px;">
-              <img src="img/letter/letter_menu_09.png" alt="">
-            </li>
-            <li class="float_rt" style="padding-top: 8px;">
-              <img src="img/letter/letter_menu_07.png" alt="">
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
+ 
 
+
+<!-- 这里是菜单区 -->
     <div class="letter_menu" id="postcard_text_menu" v-show="postcard_step==1">
       <!-- drop down button -->
       <div class='dropdown is-active'>
@@ -66,8 +56,9 @@
           <li class="menu-item active">字体 <span class="fa fa-sort-desc"></span></li>
           <li class="menu-item">字号 <span class="fa fa-sort-desc"></span></li>
           <li class="menu-item">A <span class="fa fa-sort-desc"></span></li>
+          <li class="menu-item">文字设置 <span class="fa fa-sort-desc"></span></li>
         </ul>
-        <div style="width:750px">
+        <div style="">
           <ul style="margin-left: 360px; line-height: 38px;">
             <li class="float_rt" style="padding-top: 8px;">
               <img src="img/letter/letter_menu_13.png" alt="">
@@ -86,6 +77,8 @@
       </div>
     </div>
 <div>
+
+<!-- 菜单详情 -->
 <div class="letter_img_lt menu_active" id="ziti" >
   <div class='btn_lf slidesjs-previous  slidesjs-navigation'>
   </div>
@@ -106,17 +99,15 @@
 <div class="letter_img_lt" id="zihao">
   <div id="slider_container">
     <label for="slider" style=' display:inline-block;margin-right : 20px;color:#ccc;font-size : 16px;'>字号</label> -
-    <div id="slider"></div> +
+    <div id="slider" class="slider"></div> +
     <input type="text" id='amount' readonly style='display:inline-block'>
   </div>
 </div>
 
 <div class="letter_img_lt" id="A">
-
   <div class="btn_lf">
     <span class='fa fa-chevron-left fa-5x'></span>
   </div>
-
   <div class="" id="colors">
     <div id="postcard_all_colors" style="background-image:url(/img/letter/all_colors_03.png)"></div>
     <div id="colorpickerHolder"></div>
@@ -128,8 +119,29 @@
     <span class="fa fa-chevron-right fa-5x"></span>
   </div>
 </div>
-<div class="letter_img_lt" id="tianjia"></div>
 
+<div class="letter_img_lt" id="tianjia">
+  <div id="slider_container" style="flex:4 7; min-width : 627px;padding : 40px 0">
+    <label for="opacity" style=' display:inline-block;margin-right : 20px;color:#ccc;font-size : 16px;'>透明</label> -
+    <div id="opacity" class="slider" value="100%"></div> +
+    <input type="text" id='opacity_amount' class="amount" readonly style='display:inline-block'>
+  </div>
+
+  <div id="slider_container" style="flex :3 7;min-width:470px">
+    <label for="shunxu" style="color:#ccc">顺序</label>
+    <div class="is-inline-block shunxu">置于顶层</div>
+    <div class="is-inline-block shunxu">置于顶层</div>
+    <div class="is-inline-block shunxu">置于顶层</div>
+    <div class="is-inline-block shunxu">置于顶层</div>
+  </div>
+
+    <div id="slider_container" style="flex:4 7; min-width : 627px;padding : 20px 0">
+    <label for="opacity" style=' display:inline-block;margin-right : 20px;color:#ccc;font-size : 16px;'>旋转</label> -
+    <div id="xuanzhuan" class="slider" value="0 deg"></div> +
+    <input type="text" class="amount" id='xuanzhuan_amount' class="amount" readonly style='display:inline-block'>
+  </div>
+
+</div>
 
     <div class="postcard_menu menu_active" id="cantpostcard">
       <div class='btn_lf slidesjs-previous  slidesjs-navigation'>
@@ -147,6 +159,10 @@
         <i class="fa fa-chevron-right fa-3x" aria-hidden="true"></i>
       </div>
     </div>
+
+
+
+
 
     <!-- 可编辑的明信片 属于这几种 -->
     <div class="postcard_content" id="postcard_content">
@@ -172,10 +188,12 @@
       </div>
       <div class="postcard_mask" @click="changeShowOrder"></div>
       <div class="postcard_buke_background_content" id="postcard_buke_background_content">
-        <div class="buke_stamp" style="background-image:url({{asset('img/postcard/stamp1.png')}})" v-on:click="changeStamp" >
+        <div class="buke_stamp" @click="showStamps" style="background-image:url({{asset('img/postcard/stamp1.png')}})" v-on:click="changeStamp" >
         </div>
         <div class="buke_postcard_text" id="buke_postcard_text" v-on:click="postCardShowEditFont">
-          亲爱的___:
+          <div contenteditable="true">亲爱的__:</div>
+          <img src="{{asset('img/postcard/expand.png')}}" class="expand" alt="">
+          <img src="{{asset('img/postcard/delete.png')}}" class="delete_icon" alt="">
         </div>
         
         <div class="buke_code"></div>
@@ -196,4 +214,5 @@
 @push('style')
 <link rel="stylesheet" href="js/jquery-ui.min.css">
 <link rel="stylesheet" href="css/colorpicker.css">
+<link rel="stylesheet" href="css/jquery-ui.min.css">
 @endpush
