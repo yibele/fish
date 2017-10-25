@@ -7,14 +7,14 @@ use App\letters;
 
 class letterController extends Controller
 {
-    public function index(){
-
+    public function show($id) {
+        $letter = letters::find($id);
+        return $letter;
     }
 
-    public function update() {
-
+    public function delete() {
+        
     }
-
 
 }
 

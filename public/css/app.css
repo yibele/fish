@@ -767,8 +767,34 @@ span .head {
     border-radius: 22px;
     cursor: pointer;
 }
+.postcard_color {
+    width: 44px;
+    height: 44px;
+    margin-top: 10px;
+    margin-right: 12px;
+    margin-left: 12px;
+    display: inline-block;
+    border: 1px #ADADAD solid;
+    border-radius: 22px;
+    cursor: pointer; 
+}
+
+
 
 #letter_all_colors {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    margin-top: 10px;
+    margin-right: 12px;
+    margin-left: 12px;
+    display: inline-block;
+    border: 1px #ADADAD solid;
+    border-radius: 22px;
+    cursor: pointer;
+}
+
+#postcard_all_colors {
     position: relative;
     width: 44px;
     height: 44px;
@@ -1045,7 +1071,7 @@ body.IE7 .Switch.Round {
     position : absolute;
     background-size : cover;
     background-repeat : no-repeat;
-    z-index: 30;
+    z-index: 50;
     height : 520px;
     width: 770px;
 }
@@ -1060,7 +1086,7 @@ body.IE7 .Switch.Round {
 .postcard_buke_background_content {
     position : relative;
     left : 0px;
-    z-index:50;
+    z-index:30;
     background-color : #ffffff;
     height : 520px;
     width : 770px;
@@ -1116,4 +1142,23 @@ body.IE7 .Switch.Round {
 
 .postcard_tums {
     display:inline-block;
+}
+
+.postcard_tums_active {
+    border : 2xp red solid;
+}
+
+.postcard_content {
+    display : none;
+}
+
+.postcard_content_cant {
+    display:none;
+}
+
+.postcard_content_active {
+    display  : block;
+}
+.colorpicker {
+    z-index:200
 }

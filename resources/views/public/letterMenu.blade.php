@@ -3,6 +3,7 @@
     <i class="fa fa-chevron-left fa-3x" aria-hidden="true"></i>
   </div>
 
+
   @foreach($xinzhis as $x)
   <div class="letter_img_lt1" id='letter_tums'>
     @foreach($x as $xinzhi)

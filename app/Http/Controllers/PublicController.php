@@ -101,4 +101,12 @@ class PublicController extends Controller
         return $newpost;
     }
 
+    public function getCantPostCard($id) {
+        $cantpost = cantpostcard::find($id)->toArray();
+        if($cantpost) {
+            return response($cantpost,200);
+        }else {
+            return response('没有找到相关的信用卡',504);
+        }
+    }
 }
