@@ -111,13 +111,9 @@ const vm = new Vue({
       * 修改邮票
       */
 
-      changeStamp : function(e) {
-        this.postcard_step == 2;
-      },
-
       showStamps : function(e){
-        console.log('haha')
         this.postcard_step = 2;
+        $("."+e.target.className).draggable({cursor: "move",containment: "parent" });
       },
     /**
      * 点击文字之后，显示文字编辑菜单。
@@ -340,7 +336,7 @@ const vm = new Vue({
 
 window.onload = function() {
 
-  $(".buke_stamp").draggable({cursor: "move",containment: "parent" });
+ 
 
   $("#buke_postcard_text").bind('dblclick',function(e) {
     $(this).css('cursor','move').css('border','2px #ccc dashed').draggable({ containment : 'parent'}).resizable();
@@ -387,6 +383,21 @@ function hideModal() {
   $('#kefu').hide();
   $('#loginModal').hide();
 }
+
+/* 明信片邮票部分菜单*/
+
+$('.dropdown2>ul>li').click(function() {
+  $(this).addClass('active').siblings().removeClass('active');
+  var index = $(this).index();
+  for (let i = 0; i < 4; i++) {
+    $('.letter_img_lt2').removeClass('menu_active');
+  }
+  $('.letter_img_lt2').addClass(function(j, oldClass) {
+    if (j == index) {
+      return 'menu_active';
+    }
+  })
+});
 
 /* 信件编辑部分 */
 $('.dropdown>ul>li').click(function() {

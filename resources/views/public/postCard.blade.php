@@ -36,15 +36,43 @@
       </div>
     </div>
 
-
     <div class="letter_menu" v-show="postcard_step == 2">
-      <div class='dropdown is-active'>
+      <div class='dropdown2 is-active'>
         <ul>
-          <li class="menu-item active">更改图片<span class="fa fa-sort-desc"></span></li>
-          <li class="menu-item">more<span class="fa fa-sort-desc"></span></li>
+          <li class="menu-item active">更换邮票图片<span class="fa fa-sort-desc"></span></li>
+          <li class="menu-item">邮票设置<span class="fa fa-sort-desc"></span></li>
         </ul>
       </div>
     </div>
+
+
+<div class="letter_img_lt2" id="changeStamps" v-show="postcard_step ==2">
+  <div class="upLoadStamp">上传本地图片</div>
+  <div class="upLoadStamp">上传收集图片</div>
+</div>
+
+<div class="letter_img_lt2" id="zihao" style="flex-wrap : wrap" v-show="postcard_step ==2" >
+ <div id="slider_container" style="flex:4 7; min-width : 627px;padding : 40px 0">
+    <label for="opacity" style=' display:inline-block;margin-right : 20px;color:#ccc;font-size : 16px;'>透明</label> -
+    <div id="stamp_opacity" class="slider"></div> +
+    <input type="text" id='stamp_opacity_amount' class="amount" readonly style='display:inline-block'>
+  </div>
+
+  <div id="slider_container" style="flex :3 7;min-width:470px">
+    <label for="shunxu" style="color:#ccc">顺序</label>
+    <div class="is-inline-block shunxu">置于顶层</div>
+    <div class="is-inline-block shunxu">置于顶层</div>
+    <div class="is-inline-block shunxu">置于顶层</div>
+    <div class="is-inline-block shunxu">置于顶层</div>
+  </div>
+
+    <div id="slider_container" style="flex:4 7; min-width : 627px;padding : 20px 0">
+    <label for="opacity" style=' display:inline-block;margin-right : 20px;color:#ccc;font-size : 16px;'>旋转</label> -
+    <div id="stamp_xuanzhuan" class="slider" value="0 deg"></div> +
+    <input type="text" class="amount" id='stamp_xuanzhuan_amount' class="amount" readonly style='display:inline-block'>
+  </div> 
+</div>
+    
  
 
 
@@ -79,7 +107,7 @@
 <div>
 
 <!-- 菜单详情 -->
-<div class="letter_img_lt menu_active" id="ziti" >
+<div class="letter_img_lt menu_active" id="ziti" v-show="postcard_step ==1" >
   <div class='btn_lf slidesjs-previous  slidesjs-navigation'>
   </div>
   @foreach($fonts as $f)
@@ -96,7 +124,7 @@
 </div>
 </div>
 
-<div class="letter_img_lt" id="zihao">
+<div class="letter_img_lt" id="zihao" v-show="postcard_step ==1" >
   <div id="slider_container">
     <label for="slider" style=' display:inline-block;margin-right : 20px;color:#ccc;font-size : 16px;'>字号</label> -
     <div id="slider" class="slider"></div> +
@@ -104,7 +132,7 @@
   </div>
 </div>
 
-<div class="letter_img_lt" id="A">
+<div class="letter_img_lt" id="A" v-show="postcard_step ==1" >
   <div class="btn_lf">
     <span class='fa fa-chevron-left fa-5x'></span>
   </div>
@@ -120,7 +148,7 @@
   </div>
 </div>
 
-<div class="letter_img_lt" id="tianjia">
+<div class="letter_img_lt" id="tianjia" v-show="postcard_step ==1" >
   <div id="slider_container" style="flex:4 7; min-width : 627px;padding : 40px 0">
     <label for="opacity" style=' display:inline-block;margin-right : 20px;color:#ccc;font-size : 16px;'>透明</label> -
     <div id="opacity" class="slider" value="100%"></div> +
@@ -188,7 +216,11 @@
       </div>
       <div class="postcard_mask" @click="changeShowOrder"></div>
       <div class="postcard_buke_background_content" id="postcard_buke_background_content">
-        <div class="buke_stamp" @click="showStamps" style="background-image:url({{asset('img/postcard/stamp1.png')}})" v-on:click="changeStamp" >
+        <div class="buke_stamp"  @click="showStamps" style="background-image:url({{asset('img/postcard/stamp1.png')}})" v-on:click="changeStamp" >
+        <!--
+        <img class="delete_icon1" src="{{ asset('img/postcard/delete.png') }}" alt="">
+        <img class="expand1" src="{{ asset('img/postcard/expand.png') }}" alt="">
+        -->
         </div>
         <div class="buke_postcard_text" id="buke_postcard_text" v-on:click="postCardShowEditFont">
           <div contenteditable="true">亲爱的__:</div>

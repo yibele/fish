@@ -67,6 +67,35 @@ $(function() {
     }
   })
 
+  $('#stamp_opacity').slider({
+    range: 'min',
+    min: 2,
+    max: 100,
+    create: function(event, ui) {
+      $(this).slider('value','100')
+      $("#stamp_opacity_amount").val('100%');
+    },
+    slide: function (event, ui) {
+      $("#stamp_opacity_amount").val(ui.value+'%');
+      $(".buke_stamp").css('opacity', ui.value/100);
+    }
+  })
+
+  $('#stamp_xuanzhuan').slider({
+    range: 'min',
+    min: -180,
+    max: 180,
+    values: 100,
+    create: function(event, ui) {
+      $("#stamp_xuanzhuan_amount").val('0deg');
+    },
+    slide: function (event, ui) {
+      $("#stamp_xuanzhuan_amount").val(ui.value+' deg');
+      $(".buke_stamp").css('transform', "rotate("+ui.value+"deg)");
+    }
+  })
+
+
   $("#amount").val($('#slider').slider('value'))
   $('#postcard_content_cant').css('fontSize', $('#slider').slider('value'))
 })
