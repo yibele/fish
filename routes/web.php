@@ -17,7 +17,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/shaidan','shaidan@index');
 
-Route::get('/zifei','publicController@zifei');
+Route::get('/zifei','PublicController@zifei');
 
 Route::post('/letter/create','HomeController@create');
 
@@ -64,7 +64,7 @@ Route::get('/updateContacts/{lid}','HomeController@updateContact');
 
 Route::get('/manage','adminController@index');
 
-Route::get('/postCard','publicController@postcard')->name('public.postCard');
+Route::get('/postCard','PublicController@postcard')->name('public.postCard');
 
-Route::get('/postCard/{id}','publicController@getCantPostCard');
+Route::get('/postCard/{id}','PublicController@getCantPostCard');
 
