@@ -22,9 +22,7 @@ Route::get('/zifei','PublicController@zifei');
 Route::post('/letter/create','HomeController@create');
 
 Route::get('/test',function(){
-    $letter = App\letters::find(1048);
-    $comments = $letter->comment()->get();
-    dd($comments);
+    print_r($POST);
 });
 
 Route::get('/my_manfish','HomeController@dashboard')->name('private.dashboard');
@@ -67,4 +65,6 @@ Route::get('/manage','adminController@index');
 Route::get('/postCard','PublicController@postcard')->name('public.postCard');
 
 Route::get('/postCard/{id}','PublicController@getCantPostCard');
+
+Route::post('/uploadimg/stamp','UploadController@uploadstamp');
 

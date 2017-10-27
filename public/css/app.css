@@ -1124,7 +1124,7 @@ body.IE7 .Switch.Round {
     float : right;
 }
 .buke_stamp {
-    position : absolute;
+    position : relative;
     background-size : cover;
     background-repeat : no-repeat;
     z-index : 50;
@@ -1132,7 +1132,7 @@ body.IE7 .Switch.Round {
     margin-top : 21px;
     margin-right:21px;
     width:125px;
-    right : 0px;
+    left : 600px;
     top : 0;
 }
 .buke_postmark {
@@ -1151,7 +1151,6 @@ body.IE7 .Switch.Round {
 .buke_postcard_text {
     position : relative;
     left : 100px;
-    top : 137px;
     min-width:200px;
     min-height:200px;
     max-width:600px;
@@ -1248,4 +1247,13 @@ body.IE7 .Switch.Round {
 
 .buke_stamp .active {
     display : block
+}
+
+#upLoadModal .modal-content{
+    border-radius : 5px;
+    color:#ccc;
+    padding-top:40px;
+    text-align: center;
+    background-color : #fff;
+    padding-bottom:20px;
 }

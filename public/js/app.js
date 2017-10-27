@@ -58,9 +58,10 @@ const vm = new Vue({
     /** 公开信评论 */
     comment_state: false,
     comment_like: '/img/public_letter/like.png',
-    commentStateImg: '/img/public_letter/comment.png'
-
+    commentStateImg: '/img/public_letter/comment.png',
     /** 明信片部分 */
+
+    stamp : ''
 
   },
   computed: {
@@ -111,10 +112,7 @@ const vm = new Vue({
       * 修改邮票
       */
 
-      showStamps : function(e){
-        this.postcard_step = 2;
-        $("."+e.target.className).draggable({cursor: "move",containment: "parent" });
-      },
+
     /**
      * 点击文字之后，显示文字编辑菜单。
      */
@@ -282,7 +280,7 @@ const vm = new Vue({
       }
     },
     changeLetterBackground: function(e) {
-      var xinzhi = e.currentTarget.src;
+      var xinzhi = e.curreTarget.src;
       var xinzhi_tum = xinzhi.split('/').pop();
       xinzhi_tum = xinzhi_tum.slice(0, -8);
       xinzhi_tum = 'url(/img/xinzhi/' + xinzhi_tum + '.jpg)';
@@ -351,7 +349,21 @@ window.onload = function() {
       $(".expand").fadeOut();
       $("#buke_postcard_text").css('cursor','text').css('border','none').draggable("option", "disabled", true );
     }
+    if(e.target.id !="buke_stamp") {
+        $("#buke_stamp").css('cursor','text').css('border','none').draggable("option", "disabled", true );
+        $(".delete_icon1").fadeOut();
+        $(".expand1").fadeOut();
+    }
   })
+
+    $("#buke_stamp").bind('dblclick',function(e) {
+        vm.postcard_step = 2;
+        $(this).css('cursor','move').css('border','2px #ccc dashed').draggable({ containment : 'parent'}).resizable();
+        $(".delete_icon1").fadeIn();
+        $(".expand1").fadeIn();
+        $(this).draggable("option", "disabled", false )
+        $(this).resizable("option", "disabled", false )
+    })
 
   $.ajaxSetup({
     headers: {
@@ -578,3 +590,57 @@ $("#my_manfish").click(function(event) {
   var data = checkLogin();
   console.log(data);
 })
+/** 用户上传邮票 */
+
+
+var allowType = ['image/png','image/jpeg','image/jpg']
+var form = document.getElementById('UpLoadStampForm');
+var request = new XMLHttpRequest();
+form.addEventListener('submit',function(e) {
+  e.preventDefault();
+  var input = $("#upload_stamp");
+  var files = input.prop('files');
+  var size = files[0].size;
+  console.log(files);
+  var type = files[0].type;
+  var isImage = $.inArray(type,allowType);
+  console.log(isImage);
+  if(size < 204800 && isImage != -1) {
+      var formdata = new FormData(form);
+      request.open('post','/uploadimg/stamp');
+      request.addEventListener('load',transferComplete);
+      request.send(formdata);
+  } else if(isImage === -1) {
+      show_message(true,'请上传png,jpg,jpeg格式的图片')
+  } else if (size > 204800) {
+      show_message(true,'文件过大，请小于200kb')
+  }
+})
+
+function transferComplete(data) {
+  response  = JSON.parse(data.currentTarget.response);
+  if(response.success) {
+      $("#upLoadModal").removeClass('is-active');
+      vm.messageShow = true;
+      vm.$data.message = '设置成功';
+      var imgSrc = response.imgSrc.split('/');
+      var imgSrc = imgSrc[1];
+      $(".buke_stamp").css('background-image','url("/storage/'+imgSrc+'")')
+      setTimeout(function() { vm.messageShow = false},2000);
+  }
+}
+
+$("#showUploadModal").click(function() {
+  $("#upLoadModal").addClass('is-active');
+})
+
+$(".modal-background").click(function() {
+  $("#upLoadModal").removeClass('is-active');
+})
+
+function show_message(bool,data) {
+    vm.messageShow = bool;
+    vm.message = data
+    setTimeout(function() { vm.messageShow = false},1500);
+}
+

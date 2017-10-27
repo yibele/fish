@@ -31,7 +31,7 @@
     <div id="app">
 
         <transition name="slide-fade">
-        <span v-show="messageShow" class="messages notification is-danger is-pulled-right" style="position:absolute;right:0px;">
+        <span v-show="messageShow" class="messages notification is-danger is-pulled-right" style="position:absolute;right:0px;z-index:1100">
             ${message}
         </span>
         </transition>

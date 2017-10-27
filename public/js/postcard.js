@@ -107,7 +107,6 @@ function changeFontFamily(event, fontFamily, accesskey, lineHeight) {
   var siblings = obj.siblings();
   siblings.removeClass('active');
   objchangefont(font_dom, accesskey);
-  letter_neirong.style.lineHeight = lineHeight;
   return false;
 }
 
@@ -181,3 +180,5 @@ $(".letter_color").click(function() {
     $(siblings[i]).removeClass('active');
   }
 })
+
+/** 上传邮票 */
