@@ -4,7 +4,7 @@
   <div class="letter_menu">
     <!-- drop down button -->
     <div class='dropdown is-active'>
-      <ul>
+      <ul id="commen-font-style">
         <li class="active menu-item" aria-haspopup="true" aria-controls="dropdown-menu">信纸 <span class='fa fa-sort-desc'></span></li>
         <li class="menu-item">字体 <span class="fa fa-sort-desc"></span></li>
         <li class="menu-item">字号 <span class="fa fa-sort-desc"></span></li>

@@ -1155,6 +1155,7 @@ body.IE7 .Switch.Round {
     min-height:200px;
     max-width:600px;
     max-height:500px;
+    font-weight : 300;
 }
 
 .postcard_front {
@@ -1256,4 +1257,13 @@ body.IE7 .Switch.Round {
     text-align: center;
     background-color : #fff;
     padding-bottom:20px;
+}
+
+.font-style-menu {
+    padding-top : 14px !important;
+    width : 45px !important;
+}
+
+.bold { 
+    font-weight: 900 !important;
 }

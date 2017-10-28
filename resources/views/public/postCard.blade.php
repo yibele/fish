@@ -38,8 +38,8 @@
         <div class="letter_menu" v-show="postcard_step == 2">
             <div class='dropdown2 is-active'>
                 <ul>
-                    <li class="menu-item active">更换邮票图片<span class="fa fa-sort-desc"></span></li>
-                    <li class="menu-item">邮票设置<span class="fa fa-sort-desc"></span></li>
+                    <li class="menu-item active">更换邮票图片 <span class="fa fa-sort-desc"></span></li>
+                    <li class="menu-item">邮票设置 <span class="fa fa-sort-desc"></span></li>
                 </ul>
             </div>
         </div>
@@ -77,6 +77,7 @@
                 <input type="text" id='stamp_opacity_amount' class="amount" readonly style='display:inline-block'>
             </div>
 
+            <!--
             <div id="slider_container" style="flex :3 7;min-width:470px">
                 <label for="shunxu" style="color:#ccc">顺序</label>
                 <div class="is-inline-block shunxu">置于顶层</div>
@@ -84,6 +85,7 @@
                 <div class="is-inline-block shunxu">置于顶层</div>
                 <div class="is-inline-block shunxu">置于顶层</div>
             </div>
+            -->
 
             <div id="slider_container" style="flex:4 7; min-width : 627px;padding : 20px 0">
                 <label for="opacity"
@@ -100,12 +102,21 @@
         <div class="letter_menu" id="postcard_text_menu" v-show="postcard_step==1">
             <!-- drop down button -->
             <div class='dropdown is-active'>
-                <ul>
+                <ul id="commen-font-style">
                     <li class="menu-item active">字体 <span class="fa fa-sort-desc"></span></li>
                     <li class="menu-item">字号 <span class="fa fa-sort-desc"></span></li>
                     <li class="menu-item">A <span class="fa fa-sort-desc"></span></li>
                     <li class="menu-item">文字设置 <span class="fa fa-sort-desc"></span></li>
+                    
                 </ul>
+                <ul id="postcard-font-style">
+                    <li class="menu-item font-style-menu" id="bold"><i class="fa fa-bold" aria-hidden="true"></i></li>
+                    <li class="menu-item font-style-menu active" id="text-align-left" style="border-right : none"><i class="fa fa-align-left" aria-hidden="true"></i></li>
+                    <li class="menu-item font-style-menu" id="text-align-center" style="border-right : none"><i class="fa fa-align-center" aria-hidden="true"></i></li>
+                    <li class="menu-item font-style-menu" style="" id="text-align-right"><i class="fa fa-align-right" aria-hidden="true"></i></li>
+                    <li style="width:40px;border-right : none;padding-top : 14px;color :#333"><i class="fa fa-forward" aria-hidden="true"></i></li> 
+                </ul>
+                <!--
                 <div style="">
                     <ul style="margin-left: 360px; line-height: 38px;">
                         <li class="float_rt" style="padding-top: 8px;">
@@ -122,6 +133,7 @@
                         </li>
                     </ul>
                 </div>
+                -->
             </div>
         </div>
         <div>

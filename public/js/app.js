@@ -412,7 +412,7 @@ $('.dropdown2>ul>li').click(function() {
 });
 
 /* 信件编辑部分 */
-$('.dropdown>ul>li').click(function() {
+$('#commen-font-style>li').click(function() {
   $(this).addClass('active').siblings().removeClass('active');
   var index = $(this).index();
   for (let i = 0; i < 4; i++) {
@@ -424,6 +424,34 @@ $('.dropdown>ul>li').click(function() {
     }
   })
 });
+$("#bold").click((res)=>{
+  $("#bold").toggleClass('active')
+  $("#buke_postcard_text").toggleClass('bold')
+})
+
+var text_align_left = $("#text-align-left")
+var text_align_center = $("#text-align-center")
+var text_align_right = $("#text-align-right")
+
+$("#text-align-left").click((res)=> {
+  $("#buke_postcard_text").css('text-align','left');
+  text_align_left.addClass('active');
+  text_align_right.removeClass('active')
+  text_align_center.removeClass('active')
+})
+$("#text-align-center").click((res)=>{
+  $("#buke_postcard_text").css('text-align','center');
+  text_align_left.removeClass('active');
+  text_align_right.removeClass('active')
+  text_align_center.addClass('active')
+})
+$("#text-align-right").click((res)=>{
+  $("#buke_postcard_text").css('text-align','right'); 
+  text_align_left.removeClass('active');
+  text_align_right.addClass('active')
+  text_align_center.removeClass('active')
+})
+
 
 $('.letter_img_detail').click(function() {
   var siblings = $(this).siblings();
@@ -642,5 +670,9 @@ function show_message(bool,data) {
     vm.messageShow = bool;
     vm.message = data
     setTimeout(function() { vm.messageShow = false},1500);
+}
+
+function change_font_style (){
+
 }
 
