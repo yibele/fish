@@ -44,6 +44,15 @@
             </div>
         </div>
 
+         <div class="letter_menu" v-show="postcard_step == 3">
+            <div class='dropdown3 is-active'>
+                <ul>
+                    <li class="menu-item active">更换图片<span class="fa fa-sort-desc"></span></li>
+                    <li class="menu-item">图片设置<span class="fa fa-sort-desc"></span></li>
+                </ul>
+            </div>
+        </div>
+
 
         <!-- 上传邮票 -->
         <div class="modal" id="upLoadModal">
@@ -62,7 +71,7 @@
             <button class="modal-close is-large" aria-label="close"></button>
         </div>
 
-
+        <!-- 邮票设置 -->
         <div class="letter_img_lt2" id="changeStamps" v-show="postcard_step ==2">
             <div class="upLoadStamp" id="showUploadModal">上传本地图片</div>
             <div class="upLoadStamp" id="upLoadPhoneStamp">上传手机图片</div>
@@ -93,6 +102,51 @@
                 <div id="stamp_xuanzhuan" class="slider" value="0 deg"></div>
                 +
                 <input type="text" class="amount" id='stamp_xuanzhuan_amount' class="amount" readonly
+                       style='display:inline-block'>
+            </div>
+        </div>
+
+
+        <!-- 图片设置 -->
+        <div class="letter_img_lt3" id="changeStamps" v-show="postcard_step ==3">
+            <div class="upLoadStamp" id="showUploadModal">上传本地图片</div>
+            <div class="upLoadStamp" id="upLoadPhoneStamp">上传手机图片</div>
+        </div>
+
+        <div class="letter_img_lt3" id="zihao" style="flex-wrap : wrap" v-show="postcard_step ==3">
+            <div id="slider_container" style="flex:1 2; width : 627px;padding : 40px 0">
+                <label for="opacity"
+                       style=' display:inline-block;margin-right : 20px;color:#ccc;font-size : 16px;'>透明</label> -
+                <div id="background_opacity" class="slider"></div>
+                +
+                <input type="text" id='background_opacity_amount' class="amount" readonly style='display:inline-block'>
+            </div>
+
+            <!--
+            <div id="slider_container" style="flex :3 7;min-width:470px">
+                <label for="shunxu" style="color:#ccc">顺序</label>
+                <div class="is-inline-block shunxu">置于顶层</div>
+                <div class="is-inline-block shunxu">置于顶层</div>
+                <div class="is-inline-block shunxu">置于顶层</div>
+                <div class="is-inline-block shunxu">置于顶层</div>
+            </div>
+            -->
+
+            <div id="slider_container" style="flex:1 2; width : 627px;padding : 40px 0">
+                <label for="opacity"
+                       style=' display:inline-block;margin-right : 20px;color:#ccc;font-size : 16px;'>旋转</label> -
+                <div id="background_xuanzhuan" class="slider" value="0 deg"></div>
+                +
+                <input type="text" class="amount" id='background_xuanzhuan_amount' class="amount" readonly
+                       style='display:inline-block'>
+            </div>
+
+            <div id="slider_container" style="width : 627px;padding : 40px 0">
+                <label for="opacity"
+                       style=' display:inline-block;margin-right : 20px;color:#ccc;font-size : 16px;'>圆角</label> -
+                <div id="background_radius" class="slider" value="0 deg"></div>
+                +
+                <input type="text" class="amount" id='background_radius_amount' class="amount" readonly
                        style='display:inline-block'>
             </div>
         </div>
@@ -255,7 +309,7 @@
             </div>
             <div class="postcard_mask" @click="changeShowOrder"></div>
         <div class="postcard_buke_background_content" id="postcard_buke_background_content">
-            <div class="buke_stamp" id="buke_stamp"  style="background-image: url({{asset('img/postcard/stamp1.png')}})
+            <div class="buke_stamp" id="buke_stamp"  style="background-image: url({{asset('img/postcard/addstamp.png')}})
             "  >
 
         <img class="delete_icon1" src="{{ asset('img/postcard/delete.png') }}" alt="">

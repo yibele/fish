@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Auth;
  */
 class HomeController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -22,7 +21,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
 
     /**
@@ -50,20 +49,10 @@ class HomeController extends Controller
     public function dashboard()
     {
         $user = Auth::user();
-        if ($user->role == 'admin') {
-            return redirect()->action('adminController@index');
-        } else {
+        
             //获取用户信息
             $letters = $user->letter()->orderBy('created_at', "DESC")->paginate(3);
-//            foreach($letter as $k=>&$v){
-//                if($k == 'status'){
-//                    switch ($v){
-//                        case 0:
-//                    }
-//                }
-//            }
             return view('private.dashboard')->with('letters', $letters);
-        }
     }
 
     /**
@@ -73,7 +62,6 @@ class HomeController extends Controller
      */
     public function editLetter($lid)
     {
-
         $fonts = PublicController::getFonts();
         $fontColors = PublicController::getFontColors();
         $xinzhis = PublicController::getXinzhis();
@@ -95,14 +83,12 @@ class HomeController extends Controller
         $update = $request->post();
         $letters = letters::find($update['lid']);
 
-
         $letters->lt_back = $update['lt_back'];
         $letters->lt_content = $update['lt_content'];
         $letters->lt_fontSize = $update['lt_fontSize'];
         $letters->lt_fontid = $update['lt_fontFamily'][0];
         $letters->lt_accesskey = $update['lt_fontFamily'][1];
         $letters->lt_color = $update['lt_color'];
-
 
         if ($letters->save()) {
             return response($letters->lid, 200);
@@ -170,7 +156,6 @@ class HomeController extends Controller
         //     } else {
         //         echo 'fail';
         //     }
-
     }
 
 

@@ -95,6 +95,47 @@ $(function() {
     }
   })
 
+  $('#background_opacity').slider({
+    range: 'min',
+    min: 2,
+    max: 100,
+    create: function(event, ui) {
+      $(this).slider('value','100')
+      $("#background_opacity_amount").val('100%');
+    },
+    slide: function (event, ui) {
+      $("#background_opacity_amount").val(ui.value+'%');
+      $("#postcard_buke_background_img").css('opacity', ui.value/100);
+    }
+  })
+
+  $('#background_xuanzhuan').slider({
+    range: 'min',
+    min: -180,
+    max: 180,
+    values: 100,
+    create: function(event, ui) {
+      $("#background_xuanzhuan_amount").val('0deg');
+    },
+    slide: function (event, ui) {
+      $("#background_xuanzhuan_amount").val(ui.value+' deg');
+      $("#postcard_buke_background_img").css('transform', "rotate("+ui.value+"deg)");
+    }
+  })
+
+  $('#background_radius').slider({
+    range: 'min',
+    min: 0,
+    max: 50,
+    values: 100,
+    create: function(event, ui) {
+      $("#background_radius_amount").val('0px');
+    },
+    slide: function (event, ui) {
+      $("#background_radius_amount").val(ui.value+' px');
+      $("#postcard_buke_background_img").css('border-radius', ui.value+"px");
+    }
+  })
 
   $("#amount").val($('#slider').slider('value'))
   $('#postcard_content_cant').css('fontSize', $('#slider').slider('value'))

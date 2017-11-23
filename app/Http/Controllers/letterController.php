@@ -11,11 +11,9 @@ class letterController extends Controller
         $letter = letters::find($id);
         return $letter;
     }
-
     public function delete() {
         
     }
-
 }
 
 

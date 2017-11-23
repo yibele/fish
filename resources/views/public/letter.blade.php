@@ -50,7 +50,6 @@
 <script src='js/jquery-ui.min.js'></script>
 <script src='js/jquery.slides.min.js'></script>
 @endpush
-
 @push('style')
 <link rel="stylesheet" href="js/jquery-ui.min.css">
 <link rel="stylesheet" href="css/colorpicker.css">

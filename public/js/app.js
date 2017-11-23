@@ -280,10 +280,10 @@ const vm = new Vue({
       }
     },
     changeLetterBackground: function(e) {
-      var xinzhi = e.curreTarget.src;
+      var xinzhi = e.target.src;
       var xinzhi_tum = xinzhi.split('/').pop();
       xinzhi_tum = xinzhi_tum.slice(0, -8);
-      xinzhi_tum = 'url(/img/xinzhi/' + xinzhi_tum + '.jpg)';
+      xinzhi_tum = 'url('+ xinzhi + ')';
       this.letter_content_background = {
         'backgroundImage': xinzhi_tum,
         'backgroundSize': 'contain'
@@ -302,7 +302,7 @@ const vm = new Vue({
         }
       } else {
         if (this.tag1 == 1) {
-          let that = this;
+          var that = this;
           this.trans_class1 = 'turn-180-0';
           this.card = this.card_back_03;
           setTimeout(this.chageImg, 745, this.card_front, 1);
@@ -343,6 +343,11 @@ window.onload = function() {
     $(this).draggable("option", "disabled", false )
     $(this).resizable("option", "disabled", false )
   })
+  /** 这里要修改一下 */
+  $(".postcard_buke_background_img").bind('dblclick',(res)=>{
+    vm.postcard_step = 3;
+    $("#cantpostcard").css('display','none');
+  })
   $("#postcard_buke_background_content").on('click',function(e) {
     if(e.target.id != 'buke_postcard_text') {
       $(".delete_icon").fadeOut();
@@ -357,12 +362,17 @@ window.onload = function() {
   })
 
     $("#buke_stamp").bind('dblclick',function(e) {
-        vm.postcard_step = 2;
         $(this).css('cursor','move').css('border','2px #ccc dashed').draggable({ containment : 'parent'}).resizable();
         $(".delete_icon1").fadeIn();
         $(".expand1").fadeIn();
         $(this).draggable("option", "disabled", false )
         $(this).resizable("option", "disabled", false )
+    })
+    $("#buke_stamp").click((res)=>{
+      vm.postcard_step = 2;
+    })
+    $(".delete_icon1").click((res)=>{
+      $("#buke_stamp").css('background-image','url("/img/postcard/addstamp.png")')
     })
 
   $.ajaxSetup({
@@ -411,11 +421,24 @@ $('.dropdown2>ul>li').click(function() {
   })
 });
 
+$('.dropdown3>ul>li').click(function() {
+  $(this).addClass('active').siblings().removeClass('active');
+  var index = $(this).index();
+  for (let i = 0; i < 4; i++) {
+    $('.letter_img_lt3').removeClass('menu_active');
+  }
+  $('.letter_img_lt3').addClass(function(j, oldClass) {
+    if (j == index) {
+      return 'menu_active';
+    }
+  })
+});
+
 /* 信件编辑部分 */
 $('#commen-font-style>li').click(function() {
   $(this).addClass('active').siblings().removeClass('active');
   var index = $(this).index();
-  for (let i = 0; i < 4; i++) {
+  for (var i = 0; i < 4; i++) {
     $('.letter_img_lt').removeClass('menu_active');
   }
   $('.letter_img_lt').addClass(function(j, oldClass) {
@@ -446,7 +469,7 @@ $("#text-align-center").click((res)=>{
   text_align_center.addClass('active')
 })
 $("#text-align-right").click((res)=>{
-  $("#buke_postcard_text").css('text-align','right'); 
+  $("#buke_postcard_text").css('text-align','right');
   text_align_left.removeClass('active');
   text_align_right.addClass('active')
   text_align_center.removeClass('active')

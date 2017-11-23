@@ -2,15 +2,11 @@
   <div class='btn_lf slidesjs-previous  slidesjs-navigation'>
     <i class="fa fa-chevron-left fa-3x" aria-hidden="true"></i>
   </div>
-
-
-  @foreach($xinzhis as $x)
   <div class="letter_img_lt1" id='letter_tums'>
-    @foreach($x as $xinzhi)
-      <img src="{{asset($xinzhi['src'])}}" class='letter_img_detail' alt="" @click='changeLetterBackground'>
+    @foreach($xinzhis as $xinzhi)
+      <img src="{{$xinzhi->src}}" class='letter_img_detail' alt="" @click='changeLetterBackground'>
     @endforeach
   </div>
-  @endforeach
 
   <div class="btn_rt slidesjs-next  slidesjs-navigation">
     <i class="fa fa-chevron-right fa-3x" aria-hidden="true"></i>

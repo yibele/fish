@@ -1,0 +1,12 @@
+  .left {
+    width : 200px;
+    height : 800px;
+    float : left;
+    border : 1px #333 solid;
+  }
+
+  .right {
+    margin-left : 200px;
+    height : 800px;
+    border : 1px #333 solid;
+  }

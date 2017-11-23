@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class letters extends Model
 {
-    protected $primaryKey = 'lid';
+    protected $primaryKey = 'id';
 
     public function user() {
         return $this->belongsTo('App\User');

@@ -25,11 +25,8 @@
     @stack('style')
 </head>
 <body>
-
     @include("_includes.stars")
-
     <div id="app">
-
         <transition name="slide-fade">
         <span v-show="messageShow" class="messages notification is-danger is-pulled-right" style="position:absolute;right:0px;z-index:1100">
             ${message}
@@ -38,7 +35,6 @@
         @include('_includes.nav')
         @yield('content')
     </div>
-
     @stack('javascript')
         <!-- Scripts -->
     @include('_includes.footer')

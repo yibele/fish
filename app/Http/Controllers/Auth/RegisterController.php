@@ -28,7 +28,7 @@ class RegisterController extends Controller
      * @var string
      */
      protected function redirectTo () {
-         return response(User::$id,'200');
+         return response(User::id,'200');
      }
 
     /**

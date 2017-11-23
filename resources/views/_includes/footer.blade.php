@@ -20,7 +20,7 @@
                 <li><a  id="registerTab">注册</a></li>
             </ul>
         </div>
-
+        <!-- 登录表单 -->
         <div class="is-centered loginForm is-active" id="loginForm">
             <form action="{{url('/login')}}" method="post" style="margin-top:40px;width:420px" id="lForm" >
                 {{csrf_field()}}
@@ -32,6 +32,7 @@
             </form>
         </div>
 
+        <!-- 注册表单 -->
         <div class="is-centered loginForm" id="registerForm">
             <form action="{{ url('/register') }}" method="post" style="margin-top:40px;width:420px" id="register-form">
                 {{csrf_field()}}
@@ -123,14 +124,21 @@ $(function () {
             }
         })
     })
-
-  
+  const modal_content = $('.modal-content');
     $("#registerTab").click(function () {
         modal_content.height('500px').css('background-image','url(/img/index/registerBak.png)')
         $(this).addClass('active');
         $("#loginTab").removeClass('active')
         $('#registerForm').addClass('is-active');
         $('#loginForm').removeClass('is-active')
+    })
+
+    $("#loginTab").click(function () {
+      modal_content.height('380px').css('background-image','url(/img/index/loginBack.png)')
+      $(this).addClass('active');
+      $("#registerTab").removeClass('active')
+      $('#registerForm').removeClass('is-active');
+      $('#loginForm').addClass('is-active')
     })
 })
    
